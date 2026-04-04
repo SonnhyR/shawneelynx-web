@@ -1,0 +1,241 @@
+<div class="book-page">
+  <!-- Hero / Synopsis Section -->
+  <section class="book-hero">
+    <div class="book-cover">
+      <img src="/assets/images/poem.jpg" alt="Portada Serendipity Poem">
+    </div>
+    <div class="book-info">
+      <h1 class="book-title">Serendipity Poem</h1>
+      <h2 class="book-subtitle">Saga Litharya - Libro I</h2>
+      <div class="synopsis">
+        <p>Hace cuatro años, un matrimonio selló la paz entre el hielo y el bosque. Lo que empezó como deber se
+          convirtió en amor, y ese amor se convirtió en la base de una prosperidad que parecía inquebrantable.</p>
+        <p>Pero cuando un accidente borra la memoria del príncipe Kaelan, todo lo construido pende de un hilo. Evenny
+          deberá hacerlo enamorarse de nuevo... antes de que el odio ancestral despierte una guerra.</p>
+      </div>
+      <div class="book-actions">
+        <a href="#" class="btn btn-primary">Quiero leerlo</a>
+        <a routerLink="/mundo-aethoris/litharya" class="btn btn-secondary">Explorar Litharya</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Characters Section -->
+  <section class="characters-section">
+    <h3 class="section-title">Personajes</h3>
+
+    <div class="character-category">
+      <h4 class="category-title">Personajes Principales</h4>
+      <div class="char-grid">
+        <div class="char-card" (click)="openModal(protagonistas[0])">
+          <div class="char-avatar">
+            <img src="/assets/images/lan.png" alt="Kaelan de Cyrion" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Kaelan de Cyrion</h5>
+            <p class="char-subtitle">El príncipe de Hielo</p>
+            <p class="preview-text">Kaelan es, en apariencia, todo lo que Evenny no es: directo, físico, con una
+              frialdad que roza lo insultante...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(protagonistas[1])">
+          <div class="char-avatar">
+            <img src="/assets/images/evenny.png" alt="Evenny de Aeloreas" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Evenny de Aeloreas</h5>
+            <p class="char-subtitle">El príncipe Esmeralda</p>
+            <p class="preview-text">Evenny es un hombre atrapado entre dos versiones de sí mismo: la que muestra al
+              mundo y la que guarda en la oscuridad...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="character-category secondary-chars">
+      <h4 class="category-title">Personajes Secundarios</h4>
+      <div class="char-grid">
+        <div class="char-card" (click)="openModal(secundarios[0])">
+          <div class="char-avatar">
+            <img src="/assets/images/rhia.png" alt="Rhiannon de Aeloreas" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Rhiannon de Aeloreas</h5>
+            <p class="char-subtitle">La hermana firme</p>
+            <p class="preview-text">Rhiannon es, en apariencia, la princesa perfecta: educada, elegante, con una sonrisa
+              que desarma...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[1])">
+          <div class="char-avatar">
+            <img src="/assets/images/ithandriel.png" alt="Ithandriel de Vespera" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Ithandriel de Vespera</h5>
+            <p class="char-subtitle">El príncipe de hierro</p>
+            <p class="preview-text">Ithandriel es el príncipe heredero de Vespera, el reino del hierro y la tecnología,
+              pero...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+
+        <div class="char-card" (click)="openModal(secundarios[2])">
+          <div class="char-avatar">
+            <img src="/assets/images/neera.png" alt="Neera" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Neera</h5>
+            <p class="char-subtitle">La compañera fiel</p>
+            <p class="preview-text">Neera es una hipogrifo hembra,compañera inseparable de Kaelan desde que nació...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más... </span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[3])">
+          <div class="char-avatar">
+            <img src="/assets/images/lysander.png" alt="Lysander de Cyrion" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Lysander de Cyrion</h5>
+            <p class="char-subtitle">El príncipe bufón</p>
+            <p class="preview-text">Lysander es el segundo hijo del rey Jodreth de Cyrion, y el hermano del medio...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[4])">
+          <div class="char-avatar">
+            <img src="/assets/images/corvan.png" alt="Corvan de Thelynor" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Corvan de Thelynor</h5>
+            <p class="char-subtitle">El amigo leal</p>
+            <p class="preview-text">Corvan es, en apariencia, la personificación de la lealtad cyriana: firme,
+              directa...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[5])">
+          <div class="char-avatar">
+            <img src="/assets/images/xina.png" alt="Xina de Virell" style="object-position: top center">
+          </div>
+          <div class="char-details">
+            <h5>Xina de Virell</h5>
+            <p class="char-subtitle">La hermana de elección</p>
+            <p class="preview-text">Xina es la comandante de la Guardia de Sombras, el escuadrón de élite de espías...
+            </p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[6])">
+          <div class="char-avatar">
+            <img src="/assets/images/eirik.png" alt="Eirik de Cyrion" style="object-position: top center">
+          </div>
+          <div class="char-details">
+            <h5>Eirik de Cyrion</h5>
+            <p class="char-subtitle">El heredero político</p>
+            <p class="preview-text">Eirik es el primogénito del rey Jodreth, el heredero perfecto que nunca ha dado
+              motivos de queja...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+
+        <div class="char-card" (click)="openModal(secundarios[7])">
+          <div class="char-avatar">
+            <img src="/assets/images/lyra.png" alt="Lyra de Aeloreas" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Lyra de Aeloreas</h5>
+            <p class="char-subtitle">La gemela silenciosa</p>
+            <p class="preview-text">Lyra es la mayor de las gemelas —aunque apenas por unos minutos— y la más...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[8])">
+          <div class="char-avatar">
+            <img src="/assets/images/elara.png" alt="Elara de Aeloreas" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Elara de Aeloreas</h5>
+            <p class="char-subtitle">La gemela tormenta</p>
+            <p class="preview-text">Elara es todo lo que Lyra no es: ruidosa, impulsiva, y con una energía que...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más...</span>
+          </div>
+        </div>
+
+        <div class="char-card" (click)="openModal(secundarios[9])">
+          <div class="char-avatar">
+            <img src="/assets/images/khallik.png" alt="Rey Khallik de Aeloreas" style="object-position: center">
+          </div>
+          <div class="char-details">
+            <h5>Rey Khallik de Aeloreas</h5>
+            <p class="char-subtitle">El rey roble</p>
+            <p class="preview-text">Khallik es el rey de Aeloreas, el monarca que llevó a su reino de la guerra a la
+              paz...</p>
+            <span class="read-more-hint">✨ Haz clic para conocer más</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" *ngIf="selectedCharacter" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()">&times;</button>
+
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <img [src]="selectedCharacter.img" [alt]="selectedCharacter.name">
+      </div>
+      <div class="modal-title">
+        <h2>{{selectedCharacter.name}}</h2>
+        <p class="modal-subtitle">{{selectedCharacter.subtitle}}</p>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-description">
+        <p>{{selectedCharacter.fullDescription}}</p>
+      </div>
+
+      <div class="character-info-grid">
+        <div class="info-item">
+          <span class="info-label">Género:</span>
+          <span class="info-value">Construyendo</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Fecha de nacimiento:</span>
+          <span class="info-value">Construyendo</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Lugar de nacimiento:</span>
+          <span class="info-value">Construyendo</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Hobbies:</span>
+          <span class="info-value">Construyendo</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Estatura:</span>
+          <span class="info-value">Construyendo</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Orientación sexual:</span>
+          <span class="info-value">Construyendo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

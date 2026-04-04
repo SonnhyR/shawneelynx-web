@@ -1,0 +1,78 @@
+<div class="book-page">
+    <!-- Hero / Synopsis Section -->
+    <section class="book-hero">
+        <div class="book-cover">
+            <!-- El user solicita portada poem.jpg (usamos absolute root path para que no de 404 en subrutas) -->
+            <img src="/assets/images/voyage.jpg" alt="Portada Serendipity Voyage">
+        </div>
+        <div class="book-info">
+            <h1 class="book-title">Serendipity Voyage</h1>
+            <h2 class="book-subtitle">Saga Litharya - Libro III</h2>
+            <div class="synopsis">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lorem ante, dapibus in, viverra
+                    quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lorem ante, dapibus in, viverra
+                    quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet</p> -->
+            </div>
+            <!-- <div class="book-actions">
+                <a href="#" class="btn btn-primary">Quiero leerlo</a>
+                <a routerLink="/mundo-aethoris/litharya" class="btn btn-secondary">Explorar Litharya</a>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Próximamente Section -->
+    <section class="page-hero proximamente-bg">
+        <div class="page-content">
+            <h1 class="page-title">{{ title }}</h1>
+            <div class="divider"></div>
+            <p class="page-subtitle">Próximamente</p>
+            <p class="page-description">
+                Esta intensa historia está siendo forjada en las sombras. Mantente atento para más novedades, avances y
+                revelaciones sobre esta obra.
+            </p>
+        </div>
+    </section>
+
+    <!-- Characters Section (Comentado - disponible para uso futuro) -->
+    <!--
+    <section class="characters-section">
+        <h3 class="section-title">Personajes</h3>
+
+        <div class="character-category">
+            <h4 class="category-title">Personajes Principales</h4>
+            <div class="char-grid">
+                @for (char of protagonistas; track char.name) {
+                <div class="char-card">
+                    <div class="char-avatar">
+                        <img [src]="char.img" [alt]="char.name" [style.object-position]="char.objectPos || 'center'">
+                    </div>
+                    <div class="char-details">
+                        <h5>{{char.name}}</h5>
+                        <p>{{char.desc}}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="character-category secondary-chars">
+            <h4 class="category-title">Personajes Secundarios</h4>
+            <div class="char-grid">
+                @for (char of secundarios; track char.name) {
+                <div class="char-card">
+                    <div class="char-avatar">
+                        <img [src]="char.img" [alt]="char.name" [style.object-position]="char.objectPos || 'center'">
+                    </div>
+                    <div class="char-details">
+                        <h5>{{char.name}}</h5>
+                        <p>{{char.desc}}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+    -->
+</div>

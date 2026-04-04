@@ -1,0 +1,163 @@
+.about-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 30%, #1a0a0c 0%, #0b0506 100%);
+}
+
+/* Hero section */
+.about-hero {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(26, 10, 12, 0.9), rgba(13, 5, 8, 0.95));
+  border-bottom: 1px solid rgba(169, 17, 1, 0.3);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--primary-red);
+  margin: 0 auto 1.5rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--gold-accent);
+  letter-spacing: 2px;
+}
+
+/* Main content */
+.about-main {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-container {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  background: rgba(26, 10, 12, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  border: 1px solid rgba(169, 17, 1, 0.2);
+  transition: all 0.4s ease;
+}
+
+.about-container:hover {
+  border-color: rgba(169, 17, 1, 0.5);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+/* Foto */
+.about-photo {
+  flex: 0 0 280px;
+  text-align: center;
+}
+
+.about-photo img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+  border: 2px solid var(--gold-accent);
+  transition: transform 0.3s ease;
+}
+
+.about-photo img:hover {
+  transform: scale(1.02);
+}
+
+.photo-caption {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--gold-accent);
+  font-style: italic;
+}
+
+/* Texto */
+.about-text {
+  flex: 1;
+}
+
+.about-text p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #bfaea0;
+  margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+.signature {
+  margin-top: 2rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: right;
+  border-top: 1px dashed rgba(169, 17, 1, 0.4);
+  padding-top: 1rem;
+}
+
+.signature-name {
+  color: var(--primary-red);
+  font-style: italic;
+}
+
+/* Cita */
+.about-quote {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border-left: 4px solid var(--primary-red);
+}
+
+.quote-content p {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--gold-accent);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 6rem 1rem 3rem;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .about-photo {
+    flex: 0 0 auto;
+  }
+  .signature {
+    text-align: center;
+  }
+  .quote-content p {
+    font-size: 1.1rem;
+  }
+}

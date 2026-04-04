@@ -1,0 +1,147 @@
+<div class="worldbuilding-page">
+    <!-- Hero Section -->
+    <section class="worldbuilding-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">World Building</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-description">
+                El mundo de Aethoris es un mundo de fantasía épica con una rica historia, cultura y secretos.
+                Está conformado por tres (3) grandes continentes (Litharya, Drakkonia y Xylos), cada uno con sus
+                propias tradiciones y costumbres. A su vez, cada continente está dividido en diferentes reinos/ciudades,
+                cada uno con
+                sus propias leyes y gobierno. Aethoris está en constante cambio, con nuevas aventuras y desafíos
+                esperando a ser descubiertos.
+            </p>
+        </div>
+    </section>
+
+    <!-- Ficha Técnica -->
+    <section class="ficha-section">
+        <div class="section-header">
+            <h2 class="section-title">🌍 AETHORIS: FICHA TÉCNICA</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="ficha-grid">
+            <div class="ficha-card"><span class="ficha-label">Nombre del planeta</span><span
+                    class="ficha-value">Aethoris</span></div>
+            <div class="ficha-card"><span class="ficha-label">Significado</span><span class="ficha-value">"Morada de la
+                    luz divina"</span></div>
+            <div class="ficha-card"><span class="ficha-label">Día</span><span class="ficha-value">36 horas terrestres
+                    (12 terzios de 3h)</span></div>
+            <div class="ficha-card"><span class="ficha-label">Año</span><span class="ficha-value">240 días aethorianos
+                    (360 días terrestres)</span></div>
+            <div class="ficha-card"><span class="ficha-label">Meses</span><span class="ficha-value">12 meses de 20
+                    días</span></div>
+            <div class="ficha-card"><span class="ficha-label">Estaciones</span><span class="ficha-value">4 estaciones de
+                    3 meses</span></div>
+        </div>
+    </section>
+
+    <!-- Los Soles -->
+    <section class="suns-section">
+        <div class="section-header">
+            <h2 class="section-title">☀️ LOS 3 "SOLES"</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="suns-grid">
+            @for (sun of suns; track sun.name) {
+            <div class="sun-card" (click)="openModal(sun.image, sun.name)">
+                <h3 class="sun-name">{{ sun.name }}</h3>
+                <p class="sun-type">{{ sun.type }}</p>
+                <p class="sun-desc">{{ sun.characteristic }}</p>
+                <div class="card-hint">✨ Haz clic para ver imagen</div>
+            </div>
+            }
+        </div>
+        <div class="estaciones-box">
+            <h3 class="estaciones-title">Ciclo estacional:</h3>
+            <div class="estaciones-grid">
+                <div class="estacion winter">❄️ Invierno → Solo Asterion visible</div>
+                <div class="estacion spring">🌱 Primavera → Astros regresa, Asterion al amanecer/anochecer</div>
+                <div class="estacion summer">☀️ Verano → Astros + Éferion visibles</div>
+                <div class="estacion autumn">🍂 Otoño → Astros + Éferion se despiden</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Las Lunas -->
+    <section class="moons-section">
+        <div class="section-header">
+            <h2 class="section-title">🌙 LAS 5 "LUNAS"</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="moons-table">
+            <div class="moons-header">
+                <span>Luna</span><span>Tamaño</span><span>Fase llena</span><span>Efecto</span>
+            </div>
+            @for (moon of moons; track moon.name) {
+            <div class="moons-row" (click)="openModal(moon.image, moon.name)">
+                <span class="moon-name">{{ moon.name }}</span>
+                <span>{{ moon.size }}</span>
+                <span>{{ moon.orbit }}</span>
+                <span>{{ moon.effect }}</span>
+            </div>
+            }
+        </div>
+        <div class="moons-note">✨ Haz clic en cualquier luna para ver su imagen ✨</div>
+    </section>
+
+    <!-- Calendario (resumido) -->
+    <section class="calendar-section">
+        <div class="section-header">
+            <h2 class="section-title">📅 Calendario Aethoreano</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">12 meses, 20 días cada uno, 4 estaciones</p>
+        </div>
+        <div class="seasons-container">
+            <div class="season-card winter-season">
+                <h3>❄️ INVIERNO</h3>
+                <div class="months-grid">@for (m of months.winter; track m.name) {<div class="month-card">
+                        <h4>{{m.name}}</h4>
+                        <p>{{m.equivalent}}</p><small>{{m.desc}}</small>
+                    </div>}</div>
+            </div>
+            <div class="season-card spring-season">
+                <h3>🌱 PRIMAVERA</h3>
+                <div class="months-grid">@for (m of months.spring; track m.name) {<div class="month-card">
+                        <h4>{{m.name}}</h4>
+                        <p>{{m.equivalent}}</p><small>{{m.desc}}</small>
+                    </div>}</div>
+            </div>
+            <div class="season-card summer-season">
+                <h3>☀️ VERANO</h3>
+                <div class="months-grid">@for (m of months.summer; track m.name) {<div class="month-card">
+                        <h4>{{m.name}}</h4>
+                        <p>{{m.equivalent}}</p><small>{{m.desc}}</small>
+                    </div>}</div>
+            </div>
+            <div class="season-card autumn-season">
+                <h3>🍂 OTOÑO</h3>
+                <div class="months-grid">@for (m of months.autumn; track m.name) {<div class="month-card">
+                        <h4>{{m.name}}</h4>
+                        <p>{{m.equivalent}}</p><small>{{m.desc}}</small>
+                    </div>}</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glosario placeholder -->
+    <section class="glosario-section">
+        <div class="section-header">
+            <h2 class="section-title">📖 GLOSARIO DE TÉRMINOS</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="glosario-placeholder">
+            <p>✨ Próximamente ✨</p><span>La enciclopedia de Aethoris está siendo forjada en las sombras...</span>
+        </div>
+    </section>
+</div>
+
+<!-- Modal para imágenes -->
+<div class="modal-overlay" *ngIf="modalOpen" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="closeModal()">&times;</button>
+        <h3 class="modal-title">{{ selectedTitle }}</h3>
+        <img [src]="selectedImage" [alt]="selectedTitle" class="modal-image">
+    </div>
+</div>

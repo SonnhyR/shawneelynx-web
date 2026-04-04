@@ -1,0 +1,292 @@
+<!-- MAPA DE LITHARYA (original, sin cambios) -->
+<section class="map-hero">
+  <div class="map-header">
+    <h1 class="map-title">Litharya</h1>
+    <p class="map-subtitle">Explora el Continente</p>
+  </div>
+
+  <div class="map-layout">
+    <!-- Contenedor del Mapa SVG -->
+    <div class="svg-container">
+      <svg viewBox="0 0 1000 1000" class="litharya-svg">
+
+        <!-- Fondo Rasterizado (El Boceto del Mapa) -->
+        <image href="/assets/images/mapax.png" x="0" y="0" width="1000" height="1000"
+          preserveAspectRatio="xMidYMid slice" class="base-map-img" />
+
+        <!-- Definiciones de Gradientes para Efecto Relieve / 3D -->
+        <defs>
+          <radialGradient id="grad-cyrion" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#4FAADA" />
+            <stop offset="100%" stop-color="#1c3d5a" />
+          </radialGradient>
+          <radialGradient id="grad-vespera" cx="80%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#8B2C38" />
+            <stop offset="100%" stop-color="#361519" />
+          </radialGradient>
+          <radialGradient id="grad-ulthor" cx="50%" cy="80%" r="70%">
+            <stop offset="0%" stop-color="#DDA02A" />
+            <stop offset="100%" stop-color="#4a3410" />
+          </radialGradient>
+          <radialGradient id="grad-aeloreas" cx="20%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#4C9A43" />
+            <stop offset="100%" stop-color="#163613" />
+          </radialGradient>
+          <radialGradient id="grad-valeroth" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#b0b0b0" />
+          </radialGradient>
+
+          <!-- Filtro de relieve topográfico simple -->
+          <filter id="topography">
+            <feDropShadow dx="3" dy="15" stdDeviation="10" flood-color="#000" flood-opacity="0.8" />
+          </filter>
+        </defs>
+
+        <g class="regions-group">
+          <!-- Cyrion (Norte) -->
+          <g class="realm-group" (mouseenter)="setHoverRealm('cyrion')" (mouseleave)="clearHoverRealm()">
+            <path d="M 500,50 C 750,50 900,200 950,400 L 500,500 L 50,400 C 100,200 250,50 500,50 Z"
+              class="region cyrion" [class.active-path]="hoveredRealmId === 'cyrion'"></path>
+            <text x="500" y="150" class="realm-text main-title">Cyrion</text>
+            <!-- Ciudades -->
+            <circle cx="500" cy="220" r="6" class="city-dot" /><text x="500" y="240" class="city-text">Elensári
+              (Cap)</text>
+            <circle cx="650" cy="250" r="4" class="city-dot" /><text x="650" y="265"
+              class="city-text">Aquartharra</text>
+            <circle cx="350" cy="250" r="4" class="city-dot" /><text x="350" y="265" class="city-text">Thelynor</text>
+            <circle cx="500" cy="300" r="5" class="star-dot" /><text x="500" y="320" class="city-text">Evensong</text>
+          </g>
+
+          <!-- Vespera (Este) -->
+          <g class="realm-group" (mouseenter)="setHoverRealm('vespera')" (mouseleave)="clearHoverRealm()">
+            <path d="M 950,400 C 980,550 900,800 700,900 L 500,500 L 950,400 Z" class="region vespera"
+              [class.active-path]="hoveredRealmId === 'vespera'"></path>
+            <text x="800" y="550" class="realm-text main-title">Vespera</text>
+            <!-- Ciudades -->
+            <circle cx="750" cy="620" r="6" class="city-dot" /><text x="750" y="640" class="city-text">Vespera
+              (Cap)</text>
+            <circle cx="850" cy="500" r="5" class="star-dot" /><text x="850" y="520"
+              class="city-text">Stoneharbor</text>
+            <circle cx="680" cy="480" r="4" class="city-dot" /><text x="680" y="470" class="city-text">Veridia</text>
+            <circle cx="800" cy="700" r="4" class="city-dot" /><text x="800" y="720" class="city-text">Vinilia</text>
+            <circle cx="850" cy="620" r="4" class="city-dot" /><text x="850" y="610" class="city-text">Volara</text>
+            <circle cx="700" cy="780" r="4" class="city-dot" /><text x="700" y="800" class="city-text">Vyslumvra</text>
+          </g>
+
+          <!-- Ulthor (Sur) -->
+          <g class="realm-group" (mouseenter)="setHoverRealm('ulthor')" (mouseleave)="clearHoverRealm()">
+            <path d="M 700,900 C 550,980 450,980 300,900 L 500,500 L 700,900 Z" class="region ulthor"
+              [class.active-path]="hoveredRealmId === 'ulthor'"></path>
+            <text x="500" y="850" class="realm-text main-title">Ulthor</text>
+            <!-- Ciudades -->
+            <circle cx="500" cy="750" r="6" class="city-dot" /><text x="500" y="770" class="city-text">Draksgard
+              (Cap)</text>
+            <circle cx="500" cy="680" r="5" class="star-dot" /><text x="500" y="670" class="city-text">Sylvaris</text>
+            <circle cx="380" cy="780" r="4" class="city-dot" /><text x="380" y="800" class="city-text">Dunhagard</text>
+            <circle cx="450" cy="880" r="4" class="city-dot" /><text x="450" y="900" class="city-text">Sinocco</text>
+            <circle cx="600" cy="800" r="4" class="city-dot" /><text x="600" y="820" class="city-text">Fergard</text>
+            <circle cx="580" cy="880" r="4" class="city-dot" /><text x="580" y="900" class="city-text">Jikagard</text>
+            <circle cx="650" cy="730" r="4" class="city-dot" /><text x="650" y="720" class="city-text">Vingard</text>
+          </g>
+
+          <!-- Aeloreas (Oeste) -->
+          <g class="realm-group" (mouseenter)="setHoverRealm('aeloreas')" (mouseleave)="clearHoverRealm()">
+            <path d="M 300,900 C 100,800 20,550 50,400 L 500,500 L 300,900 Z" class="region aeloreas"
+              [class.active-path]="hoveredRealmId === 'aeloreas'"></path>
+            <text x="200" y="550" class="realm-text main-title">Aeloreas</text>
+            <!-- Ciudades -->
+            <circle cx="250" cy="620" r="6" class="city-dot" /><text x="250" y="640" class="city-text">Embereth
+              (Cap)</text>
+            <circle cx="150" cy="500" r="5" class="star-dot" /><text x="150" y="520" class="city-text">Elbereth</text>
+            <circle cx="280" cy="480" r="4" class="city-dot" /><text x="280" y="470" class="city-text">Aetheria</text>
+            <circle cx="180" cy="680" r="4" class="city-dot" /><text x="180" y="700" class="city-text">Isilmereth</text>
+            <circle cx="150" cy="600" r="4" class="city-dot" /><text x="150" y="590" class="city-text">Virell</text>
+            <circle cx="320" cy="720" r="4" class="city-dot" /><text x="320" y="740" class="city-text">Solarae</text>
+            <circle cx="220" cy="780" r="4" class="city-dot" /><text x="220" y="800" class="city-text">Boreas</text>
+          </g>
+
+          <!-- Valeroth (Centro) -->
+          <g class="realm-group" (mouseenter)="setHoverRealm('valeroth')" (mouseleave)="clearHoverRealm()">
+            <circle cx="500" cy="500" r="140" class="region valeroth"
+              [class.active-path]="hoveredRealmId === 'valeroth'" />
+            <text x="500" y="490" class="realm-text main-title" fill="#000">Valeroth</text>
+            <circle cx="500" cy="520" r="7" class="star-dot" fill="#000" /><text x="500" y="540" class="city-text"
+              fill="#000" style="text-shadow: none; font-weight: 700;">Aethelburg</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Panel de Información Expandido -->
+    <div class="info-panel" [class.has-content]="activeRealm"
+      [ngStyle]="{'border-color': activeRealm ? activeRealm.colorHex : 'var(--primary-red)'}">
+      <!-- Empty state -->
+      @if (!activeRealm) {
+      <div class="empty-state">
+        Pasa el cursor sobre el mapa <br> para explorar los reinos y su historia.
+      </div>
+      }
+
+      <!-- Realm Display -->
+      @if (activeRealm) {
+      <div class="realm-info">
+        <div class="info-header" [style.border-bottom-color]="activeRealm.colorHex">
+          <h2 class="info-title" [style.color]="activeRealm.colorHex">{{ activeRealm.name }}</h2>
+          <h3 class="info-subtitle">{{ activeRealm.title }}</h3>
+        </div>
+
+        <div class="info-columns">
+          <div class="info-row">
+            <span class="info-label">Gobernantes:</span>
+            <span class="info-value">{{ activeRealm.reyes }}</span>
+          </div>
+
+          <div class="info-row" *ngIf="activeRealm.principes.length > 0">
+            <span class="info-label">Príncipes/Princesas:</span>
+            <ul class="info-list">
+              <li *ngFor="let p of activeRealm.principes">{{ p }}</li>
+            </ul>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">Capital / Castillo:</span>
+            <span class="info-value">{{ activeRealm.capital }} &mdash; <em>{{ activeRealm.castillo }}</em></span>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">Ciudades:</span>
+            <span class="info-value">{{ activeRealm.ciudades }}</span>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">Recurso Único:</span>
+            <span class="info-value">{{ activeRealm.recurso }}</span>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">Vestimenta:</span>
+            <span class="info-value">{{ activeRealm.ropa }}</span>
+          </div>
+
+          <div class="info-row desc-row">
+            <span class="info-label">Descripción:</span>
+            <p class="info-desc">{{ activeRealm.description }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Sagas -->
+<section class="sagas-section">
+  <div class="sagas-header">
+    <h2 class="sagas-title">Libros de Saga Litharya</h2>
+    <div class="sagas-divider"></div>
+    <p class="sagas-subtitle">Litharya es una saga de batallas íntimas: las que se libran en la intimidad de una
+      habitación, en el silencio de una noche sin dormir, en el valor de decir una verdad que destruye o la cobardía de
+      ocultarla. </p>
+    <div class="divider"></div>
+    <p class="sagas-subtitle">Es fantasía romántica en su sentido más literario: el mundo y sus reglas existen para
+      servir al conflicto
+      emocional de los personajes. La política, la guerra y la conspiración son el telón de fondo, pero el escenario
+      principal es siempre el corazón humano en su fragilidad y su ferocidad.</p>
+
+  </div>
+
+  <div class="sagas-container">
+    <!-- Serendipity Poem -->
+    <div class="saga-card">
+      <div class="saga-cover">
+        <img src="/assets/images/poem.jpg" alt="Serendipity Poem - Libro I">
+      </div>
+      <div class="saga-info">
+        <h3 class="saga-name">Serendipity Poem (Misterio - M/M) </h3>
+        <div class="saga-synopsis">
+          <p>El amor que sobrevive a la pérdida de la memoria y la identidad.</p>
+        </div>
+        <div class="saga-actions">
+          <a routerLink="/mundo-aethoris/litharya/poem" class="btn-saga btn-primary-saga">Explorar más</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Serendipity Song -->
+    <div class="saga-card coming-soon">
+      <div class="saga-cover">
+        <img src="/assets/images/song.jpg" alt="Serendipity Song - Libro II">
+        <div class="coming-badge">Próximamente</div>
+      </div>
+      <div class="saga-info">
+        <h3 class="saga-name">Serendipity Song (Sanacion - M/M)</h3>
+        <div class="saga-synopsis">
+          <p>El amor que sana las heridas más profundas de la fragilidad y el trauma.</p>
+        </div>
+        <div class="saga-actions">
+          <button class="btn-saga btn-disabled" disabled>Próximamente</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Serendipity Voyage -->
+    <div class="saga-card coming-soon">
+      <div class="saga-cover">
+        <img src="/assets/images/voyage.jpg" alt="Serendipity Voyage - Libro III">
+        <div class="coming-badge">Próximamente</div>
+      </div>
+      <div class="saga-info">
+        <h3 class="saga-name">Serendipity Voyage (Aventura/Revolución - F/F)</h3>
+        <div class="saga-synopsis">
+          <p>El amor que desafía sistemas opresivos y enciende revoluciones.</p>
+        </div>
+        <div class="saga-actions">
+          <button class="btn-saga btn-disabled" disabled>Próximamente</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Serendipity Game -->
+    <div class="saga-card coming-soon">
+      <div class="saga-cover">
+        <img src="/assets/images/game.jpg" alt="Serendipity Game - Libro IV">
+        <div class="coming-badge">Próximamente</div>
+      </div>
+      <div class="saga-info">
+        <h3 class="saga-name">Serendipity Game (Drama Psicológico - M/F)</h3>
+        <div class="saga-synopsis">
+          <p>El amor que nace del odio y se reconoce en la ruina del otro.</p>
+        </div>
+        <div class="saga-actions">
+          <button class="btn-saga btn-disabled" disabled>Próximamente</button>
+        </div>
+      </div>
+    </div>
+    <!-- Serendipity Cure -->
+    <div class="saga-card coming-soon">
+      <div class="saga-cover">
+        <img src="/assets/images/cure.jpg" alt="Serendipity Cure - Libro V">
+        <div class="coming-badge">Próximamente</div>
+      </div>
+      <div class="saga-info">
+        <h3 class="saga-name">Serendipity Cure (Redención - M/M)</h3>
+        <div class="saga-synopsis">
+          <p>El amor que intenta redimir lo imperdonable.</p>
+        </div>
+        <div class="saga-actions">
+          <button class="btn-saga btn-disabled" disabled>Próximamente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sagas-section">
+  <div class="sagas-header">
+    <h2 class="sagas-title">Una frase que resume la saga:</h2>
+    <div class="sagas-divider"></div>
+    <p class="sagas-subtitle">“En Litharya, amar es un acto de guerra. Contra el mundo, contra la sangre, contra el
+      monstruo que llevas dentro.”</p>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+<div class="about-page">
+    <!-- Hero / Título -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Sobre mí</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-subtitle">Polímata, feminista, catlover</p>
+        </div>
+    </section>
+
+    <!-- Contenido principal: foto + texto -->
+    <section class="about-main">
+        <div class="about-container">
+            <!-- Espacio para la foto -->
+            <div class="about-photo">
+                <img [src]="profileImage" alt="Foto de perfil" (error)="profileImage = '/assets/images/me.png'">
+                <div class="photo-caption">Creadora de mundos</div>
+            </div>
+
+            <!-- Texto -->
+            <div class="about-text">
+                <p>
+                    Algunas historias me rompieron antes de que yo supiera que quería escribirlas.
+
+                    No entendía por qué. Así que empecé a investigar. No solo a leer: a estudiar. Me sumergí en
+                    trastornos
+                    alimentarios, en traumas psicológicos, en historia antigua y contemporánea. Porque mi regla es
+                    hacerlo
+                    bien, o no hacer nada
+                    en absoluto. Y hacerlo bien significa no usar el dolor como adorno. Significa entenderlo, respetarlo
+                    y
+                    mostrarlo con
+                    la honestidad que se merece.
+
+                    Esa obsesión por entenderlo todo me ha llevado por caminos que no planeé, pero que ahora, viendo en
+                    retrospectiva: No me sorprende en absoluto.
+                </p>
+                <p>
+                    No soy psicóloga, ni historiadora. Tampoco soy solo escritora. Estudié enfermería veterinaria porque
+                    los
+                    animales me importaban más que casi todo. Después, programación, porque también me importa entender
+                    cómo se construyen los sistemas. Y por mi cuenta, astronomía, física, idiomas... porque
+                    constantemente
+                    me encuentro con mas preguntas que respuestas.
+
+                    Y no te cuento esto por presumir. Lo cuento porque esa forma de ser —inquieta, curiosa, voraz,
+                    imposible de
+                    encasillar— es la misma que aplico a mis personajes.
+                </p>
+                <p>
+                    Escribo sobre personas rotas que aprenden a seguir adelante. No con finales falsos, ni curaciones
+                    mágicas. Con la honestidad de quien sabe que las heridas no se cierran con un beso, pero que el amor
+                    —aunque no sea suficiente para todo— puede ser un ancla.
+
+                    Si alguna vez una historia te ha dolido tanto que no pudiste soltarla, quizá puedas encontrar una
+                    aqui tambien para ti.
+                </p>
+                <div class="signature">
+                    — Con cariño, <span class="signature-name">ShawneeLynx</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cita o bloque adicional -->
+    <section class="about-quote">
+        <div class="quote-content">
+            <p>"Prefiero existir infeliz y completa, que feliz y amputada."</p>
+        </div>
+    </section>
+</div>
+
+<app-footer></app-footer>

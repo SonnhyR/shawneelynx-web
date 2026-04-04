@@ -1,0 +1,156 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a routerLink="/" class="logo-link">
+        <img src="/assets/images/logo.png" alt="Shawnee Lynx Logo" class="nav-logo-img">
+      </a>
+    </div>
+
+    <!-- Botón hamburguesa (móvil) -->
+    <button class="nav-toggle" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen" aria-label="Menú de navegación">
+      <span class="hamburger"></span>
+    </button>
+
+    <!-- Menú de navegación -->
+    <div class="nav-menu" [class.active]="isMenuOpen">
+      <ul class="nav-list">
+
+        <!-- Obras Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" (click)="toggleDropdown($event)">
+            Obras <span class="arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu" [class.show]="isBooksDropdownOpen">
+
+            <!-- Mundo Aethoris -->
+            <li class="dropdown-submenu">
+              <a routerLink="/mundo-aethoris" (click)="isBooksDropdownOpen = false; isMenuOpen = false">🌍 Mundo
+                Aethoris</a>
+              <ul class="submenu">
+                <li class="dropdown-submenu">
+                  <a routerLink="/mundo-aethoris/litharya"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Saga Litharya</a>
+                  <ul class="submenu">
+                    <li><a routerLink="/mundo-aethoris/litharya/poem"
+                        (click)="isBooksDropdownOpen = false; isMenuOpen = false">Serendipity Poem</a></li>
+                    <li><a routerLink="/mundo-aethoris/litharya/song"
+                        (click)="isBooksDropdownOpen = false; isMenuOpen = false">Serendipity Song</a></li>
+                    <li><a routerLink="/mundo-aethoris/litharya/voyage"
+                        (click)="isBooksDropdownOpen = false; isMenuOpen = false">Serendipity Voyage</a></li>
+                    <li><a routerLink="/mundo-aethoris/litharya/game"
+                        (click)="isBooksDropdownOpen = false; isMenuOpen = false">Serendipity Game</a></li>
+                    <li><a routerLink="/mundo-aethoris/litharya/cure"
+                        (click)="isBooksDropdownOpen = false; isMenuOpen = false">Serendipity Cure</a></li>
+                  </ul>
+                </li>
+                <li><a routerLink="/mundo-aethoris/drakkonia"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Saga Drakkonia</a></li>
+                <li><a routerLink="/mundo-aethoris/xylos" (click)="isBooksDropdownOpen = false; 
+                isMenuOpen = false">Saga
+                    Xylos</a></li>
+                <li><a routerLink="/mundo-aethoris/tiriasis"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Saga Tiriasis</a></li>
+                <li><a routerLink="/mundo-aethoris/worldbuilding"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">World Building</a></li>
+              </ul>
+            </li>
+
+            <!-- Kintsugi -->
+            <li><a routerLink="/obras/kintsugi" (click)="isBooksDropdownOpen = false; isMenuOpen = false">✨ Kintsugi</a>
+            </li>
+
+            <!-- Lie or Die -->
+            <li class="dropdown-submenu">
+              <a style="cursor: default">🔥 Saga LIE OR DIE</a>
+              <ul class="submenu">
+                <li><a routerLink="/saga-lie-or-die/lie-or-die"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Lie or Die</a></li>
+                <li><a routerLink="/saga-lie-or-die/ride-or-die"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Ride or Die</a></li>
+                <li><a routerLink="/saga-lie-or-die/hit-and-run"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Hit and Run</a></li>
+                <li><a routerLink="/saga-lie-or-die/steal-and-stay"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Steal and Stay</a></li>
+              </ul>
+            </li>
+
+            <!-- Hidden Inside -->
+            <li class="dropdown-submenu">
+              <a routerLink="/saga-hidden-inside" (click)="isBooksDropdownOpen = false; isMenuOpen = false">🔮 Saga
+                Hidden Inside</a>
+              <ul class="submenu">
+                <li><a routerLink="/saga-hidden-inside/scholomance"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Scholomance</a></li>
+                <li><a routerLink="/saga-hidden-inside/ascuns"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Ascuns</a></li>
+                <li><a routerLink="/saga-hidden-inside/revelatie"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Revelatie</a></li>
+              </ul>
+            </li>
+
+            <!-- Bilogía Inferno -->
+            <li class="dropdown-submenu">
+              <a routerLink="/saga-mercy-on-me" (click)="isBooksDropdownOpen = false; isMenuOpen = false">🩸 Bilogía
+                INFERNO</a>
+              <ul class="submenu">
+                <li><a routerLink="/saga-mercy-on-me/nueve-pecados"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Nueve Pecados</a></li>
+                <li><a routerLink="/saga-mercy-on-me/naraka"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Nueve Pecados II: NARAKA</a></li>
+              </ul>
+            </li>
+
+            <!-- Love Time Machine -->
+            <li class="dropdown-submenu">
+              <a style="cursor: default">⏳ Saga Love Time Machine</a>
+              <ul class="submenu mega-submenu">
+                @for (item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]; track item) {
+                <li><a routerLink="/saga-love-time/libro-{{item}}"
+                    (click)="isBooksDropdownOpen = false; isMenuOpen = false">Libro {{item}}</a></li>
+                }
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- Mercancía -->
+        <li class="nav-item">
+          <a routerLink="/shop">Shopping</a>
+        </li>
+
+
+        <!-- Sobre -->
+        <li class="nav-item">
+          <a routerLink="/about">Sobre mí</a>
+        </li>
+
+        <!-- Sorteos/Eventos -->
+        <li class="nav-item">
+          <a routerLink="/sorteos">Eventos</a>
+        </li>
+
+        <!-- FAQ 
+        <li class="nav-item">
+          <a routerLink="/faq">❓ FAQ</a>
+        </li>
+        -->
+
+        <!-- Redes Sociales Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" (click)="toggleSocialDropdown($event)">
+            📱 RRSS <span class="arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu" [class.show]="isSocialDropdownOpen">
+            <li><a href="https://tiktok.com/@shawneelynx" target="_blank">🎵 TikTok</a></li>
+            <li><a href="https://instagram.com/shawneelynx" target="_blank">📸 Instagram</a></li>
+            <li><a href="https://twitter.com/shawneelynx" target="_blank">🐦 X</a></li>
+            <li class="divider"></li>
+            <li><a href="https://wattpad.com/shawneelynx" target="_blank" class="wattpad-link">📚 Wattpad</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

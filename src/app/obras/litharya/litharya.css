@@ -1,0 +1,554 @@
+.map-hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: #0b0506;
+  background-image: radial-gradient(circle at center, #1a0a0c 0%, #0b0506 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2rem 2rem;
+  overflow-x: hidden;
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.map-title {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-style: italic;
+  color: var(--gold-accent);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.map-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.map-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* SVG INTERACTIVE STYLES */
+.svg-container {
+  flex: 1.2;
+  max-width: 800px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+}
+
+.litharya-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border-radius: 8px;
+  /* Opcional: bordes redondeados para el contenedor del mapa */
+}
+
+/* Efectos imagen raster */
+.base-map-img {
+  opacity: 0.85;
+  /* Un poco translúcido por estética general */
+  transition: opacity 0.5s;
+}
+
+.svg-container:hover .base-map-img {
+  opacity: 1;
+  /* Ilumina temporalmente el dibujo al enfocar el mapa */
+}
+
+.realm-group {
+  cursor: crosshair;
+}
+
+/* Base de los Vectores "Zonas Muertas" */
+.region {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover effects (OVERLAYS MÁGICOS SCIFI/FANTASY) */
+.realm-group:hover .region {
+  stroke-width: 3;
+}
+
+/* Al pasar el mouse, "encendemos" suavemente la región coloreando el parche transparente e iluminando su borde con efecto neón sobre el dibujo */
+.realm-group:hover .cyrion {
+  fill: rgba(79, 170, 218, 0.3);
+  stroke: #4faada;
+  filter: drop-shadow(0 0 15px rgba(79, 170, 218, 0.8));
+  transform: scale(1.02);
+  transform-origin: center center;
+}
+
+.realm-group:hover .ulthor {
+  fill: rgba(221, 160, 42, 0.3);
+  stroke: #dda02a;
+  filter: drop-shadow(0 0 15px rgba(221, 160, 42, 0.8));
+  transform: scale(1.02);
+  transform-origin: center center;
+}
+
+.realm-group:hover .aeloreas {
+  fill: rgba(76, 154, 67, 0.3);
+  stroke: #4c9a43;
+  filter: drop-shadow(0 0 15px rgba(76, 154, 67, 0.8));
+  transform: scale(1.02);
+  transform-origin: center center;
+}
+
+.realm-group:hover .vespera {
+  fill: rgba(139, 44, 56, 0.3);
+  stroke: #8b2c38;
+  filter: drop-shadow(0 0 15px rgba(139, 44, 56, 0.8));
+  transform: scale(1.02);
+  transform-origin: center center;
+}
+
+.realm-group:hover .valeroth {
+  fill: rgba(255, 255, 255, 0.2);
+  stroke: #fff;
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+  transform: scale(1.05);
+  transform-origin: center center;
+}
+
+/* Nombres y Ciudades en Mapa */
+.realm-text {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  fill: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease;
+}
+
+.realm-group:hover .realm-text {
+  fill: rgba(255, 255, 255, 1);
+  font-size: 26px;
+}
+
+.city-dot {
+  fill: rgba(255, 255, 255, 0.8);
+  stroke: #000;
+  stroke-width: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.star-dot {
+  fill: var(--gold-accent);
+  stroke: #000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.city-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  fill: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  text-shadow: 1px 1px 3px #000;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+  letter-spacing: 0.5px;
+}
+
+.realm-group:hover .city-dot,
+.realm-group:hover .star-dot,
+.realm-group:hover .city-text {
+  opacity: 1;
+}
+
+/* UI LORE PANEL EXPANDIDO */
+.info-panel {
+  flex: 0.8;
+  background: rgba(26, 10, 12, 0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--primary-red);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  min-height: 500px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-panel.has-content {
+  border-top-width: 4px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--muted-text);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: center;
+  animation: pulse 3s infinite;
+}
+
+.realm-info {
+  animation: fadeInRight 0.4s ease;
+}
+
+.info-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-red);
+}
+
+.info-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+
+.info-subtitle {
+  font-family: var(--font-sans);
+  color: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.info-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.desc-row {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.info-value {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #f0f0f0;
+  line-height: 1.5;
+}
+
+.info-value em {
+  color: #fff;
+  font-weight: bold;
+  font-style: normal;
+  color: var(--primary-red);
+}
+
+.info-list {
+  list-style: none;
+  padding: 0 0 0 1rem;
+  margin: 0;
+}
+
+.info-list li {
+  position: relative;
+  color: #d1d1d1;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.info-list li::before {
+  content: '♦';
+  position: absolute;
+  left: -1rem;
+  color: var(--primary-red);
+  font-size: 0.8rem;
+}
+
+.info-desc {
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  color: #ccc;
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 992px) {
+  .map-layout {
+    flex-direction: column;
+  }
+
+  .info-panel {
+    width: 100%;
+    flex: auto;
+    min-height: 300px;
+  }
+}
+
+/* Sección de Sagas */
+.sagas-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #0d0508 0%, #1a0a0e 100%);
+  border-bottom: 1px solid rgba(169, 17, 1, 0.3);
+}
+
+.sagas-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sagas-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.sagas-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--primary-red);
+  margin: 0 auto 1.5rem;
+}
+
+.sagas-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  letter-spacing: 2px;
+}
+
+.sagas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.saga-card {
+  display: flex;
+  gap: 3rem;
+  background: rgba(26, 10, 12, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(169, 17, 1, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.saga-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(169, 17, 1, 0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.saga-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(169, 17, 1, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.saga-card.coming-soon {
+  opacity: 0.7;
+}
+
+.saga-card.coming-soon:hover {
+  opacity: 0.85;
+}
+
+.saga-cover {
+  flex: 0 0 200px;
+  position: relative;
+}
+
+.saga-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.saga-card:hover .saga-cover img {
+  transform: scale(1.02);
+}
+
+.coming-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.saga-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.saga-name {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.saga-synopsis p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #bfaea0;
+  text-align: justify;
+}
+
+.saga-actions {
+  margin-top: 0.5rem;
+}
+
+.btn-saga {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-sans);
+}
+
+.btn-primary-saga {
+  background: var(--primary-red);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(169, 17, 1, 0.4);
+}
+
+.btn-primary-saga:hover {
+  background: #d11a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(209, 26, 42, 0.6);
+}
+
+.btn-disabled {
+  background: rgba(100, 100, 100, 0.3);
+  color: #888;
+  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive para sagas */
+@media (max-width: 768px) {
+  .sagas-section {
+    padding: 3rem 1rem;
+  }
+
+  .sagas-title {
+    font-size: 2rem;
+  }
+
+  .saga-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .saga-cover {
+    flex: 0 0 auto;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+
+  .saga-name {
+    font-size: 1.5rem;
+  }
+
+  .saga-synopsis p {
+    text-align: center;
+  }
+}

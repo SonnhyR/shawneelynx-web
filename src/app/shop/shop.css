@@ -1,0 +1,65 @@
+.page-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-bg);
+  background-image: radial-gradient(circle at center, #2e0b11 0%, var(--dark-bg) 70%);
+  overflow: hidden;
+  text-align: center;
+  padding: 2rem;
+}
+
+.page-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.page-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  color: var(--primary-red);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background: var(--gold-accent);
+  margin: 0 auto 2rem;
+}
+
+.page-description {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .page-title { font-size: 2.8rem; }
+  .page-subtitle { font-size: 1.1rem; }
+}
