@@ -25,6 +25,17 @@ export class WorldbuildingComponent {
   selectedImage: string = '';
   selectedTitle: string = '';
 
+  // Planet map interactivity
+  hoveredContinent: string | null = null;
+
+  setHoveredContinent(continent: string) {
+    this.hoveredContinent = continent;
+  }
+
+  clearHoveredContinent() {
+    this.hoveredContinent = null;
+  }
+
   // Datos de los meses
   months = {
     winter: [
