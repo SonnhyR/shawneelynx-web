@@ -1,13 +1,8 @@
 [build]
   command = "ng build --prod"
-  publish = "dist/author-front"
+  publish = "dist/author-front/browser"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "no-cache"
