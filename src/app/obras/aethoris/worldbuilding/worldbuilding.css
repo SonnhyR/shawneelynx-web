@@ -68,8 +68,8 @@
 
 /* Contenedor SVG */
 .aethoris-svg-container {
-  flex: 1.2;
-  max-width: 800px;
+  flex: 1.4;
+  max-width: 900px;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
 }
 
@@ -99,7 +99,7 @@
 .a-region {
   fill: transparent;
   stroke: transparent;
-  stroke-width: 2;
+  stroke-width: 2.5;
   stroke-linejoin: round;
   transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -110,9 +110,7 @@
   fill: rgba(76, 154, 67, 0.28);
   stroke: #4C9A43;
   stroke-width: 2.5;
-  filter: drop-shadow(0 0 14px rgba(76, 154, 67, 0.85));
-  transform: scale(1.015);
-  transform-origin: center center;
+  filter: drop-shadow(0 0 8px rgba(76, 154, 67, 0.9));
 }
 
 /* DRAKKONIA — rojo */
@@ -121,9 +119,7 @@
   fill: rgba(192, 57, 43, 0.28);
   stroke: #C0392B;
   stroke-width: 2.5;
-  filter: drop-shadow(0 0 14px rgba(192, 57, 43, 0.85));
-  transform: scale(1.015);
-  transform-origin: center center;
+  filter: drop-shadow(0 0 8px rgba(192, 57, 43, 0.9));
 }
 
 /* XYLOS — teal */
@@ -132,9 +128,7 @@
   fill: rgba(26, 138, 138, 0.28);
   stroke: #1a8a8a;
   stroke-width: 2;
-  filter: drop-shadow(0 0 14px rgba(26, 138, 138, 0.85));
-  transform: scale(1.015);
-  transform-origin: center center;
+  filter: drop-shadow(0 0 8px rgba(26, 138, 138, 0.9));
 }
 
 /* DESCONOCIDO — gris */
@@ -143,9 +137,7 @@
   fill: rgba(120, 120, 120, 0.25);
   stroke: #888;
   stroke-width: 2;
-  filter: drop-shadow(0 0 12px rgba(150, 150, 150, 0.7));
-  transform: scale(1.015);
-  transform-origin: center center;
+  filter: drop-shadow(0 0 8px rgba(150, 150, 150, 0.7));
 }
 
 /* Sub-regiones (zonas internas de cada continente) */
@@ -167,7 +159,7 @@
 /* Textos sobre el mapa */
 .a-realm-text {
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: 13px;
   font-weight: 700;
   fill: rgba(255, 255, 255, 0.35);
   pointer-events: none;
@@ -176,17 +168,16 @@
 
 .a-realm-group:hover .a-realm-text {
   fill: rgba(255, 255, 255, 1);
-  font-size: 24px;
+  font-size: 14px;
 }
 
 .a-main-title {
   text-anchor: middle;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 
 .a-unknown-title {
   text-anchor: middle;
-  font-size: 20px;
+  font-size: 12px;
   fill: rgba(160, 160, 160, 0.45);
 }
 
@@ -197,7 +188,7 @@
 .a-city-dot {
   fill: rgba(255, 255, 255, 0.8);
   stroke: #000;
-  stroke-width: 1px;
+  stroke-width: 0.5px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s;
@@ -205,7 +196,7 @@
 
 .a-city-text {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 7px;
   fill: rgba(255, 255, 255, 0.9);
   pointer-events: none;
   text-anchor: middle;
@@ -222,7 +213,7 @@
 .a-valeroth-dot {
   fill: rgba(255, 255, 255, 0.12);
   stroke: rgba(255, 255, 255, 0.4);
-  stroke-width: 1;
+  stroke-width: 0.8;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s;
@@ -230,7 +221,7 @@
 
 .a-valeroth-text {
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: 6px;
   fill: rgba(255, 255, 255, 0.9);
   pointer-events: none;
   text-anchor: middle;
