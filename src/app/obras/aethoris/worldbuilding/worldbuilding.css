@@ -444,12 +444,15 @@ section {
   background: linear-gradient(135deg, #1f0c10, #0a0305);
   border-radius: 28px;
   padding: 2rem;
-  max-width: 90vw;
-  max-height: 90vh;
+  width: 95vw;
+  max-width: 600px;
+  max-height: 92dvh;
+  overflow-y: auto;
   text-align: center;
   border: 1px solid var(--primary-red);
   box-shadow: 0 25px 50px rgba(0,0,0,0.8);
   animation: zoomIn 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  box-sizing: border-box;
 }
 
 @keyframes zoomIn {
@@ -459,8 +462,8 @@ section {
 
 .modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1.5rem;
+  top: 0.8rem;
+  right: 1rem;
   background: none;
   border: none;
   color: #fff;
@@ -468,6 +471,7 @@ section {
   cursor: pointer;
   transition: all 0.2s;
   z-index: 10;
+  line-height: 1;
 }
 
 .modal-close:hover {
@@ -477,17 +481,78 @@ section {
 
 .modal-title {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--gold-accent);
   margin-bottom: 1rem;
+  padding-top: 0.5rem;
 }
 
 .modal-image {
-  max-width: 80vw;
-  max-height: 70vh;
+  width: 100%;
+  max-width: 100%;
+  max-height: 65vh;
   object-fit: contain;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Planet Map Section */
+.planet-map-section {
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.planet-map-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--gold-accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.planet-svg-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 40px rgba(169, 17, 1, 0.25)) drop-shadow(0 20px 60px rgba(0,0,0,0.9));
+}
+
+.planet-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.planet-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #ccc;
+  letter-spacing: 1px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
 /* Responsive */
@@ -499,6 +564,8 @@ section {
   .moons-header { display: none; }
   .moons-row { display: flex; flex-direction: column; align-items: center; padding: 0.8rem; }
   .moons-row:hover { transform: translateX(0) scale(1.02); }
-  .modal-image { max-width: 95vw; }
-  .modal-title { font-size: 1.5rem; }
+  .modal-content { padding: 1.2rem 1rem; }
+  .modal-title { font-size: 1.4rem; }
+  .modal-image { max-height: 60vh; }
+  .planet-map-title { font-size: 1.2rem; }
 }

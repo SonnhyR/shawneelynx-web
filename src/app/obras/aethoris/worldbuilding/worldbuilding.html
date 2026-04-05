@@ -1,4 +1,205 @@
 <div class="worldbuilding-page">
+
+    <!-- MAPA DEL PLANETA AETHORIS -->
+    <section class="planet-map-section">
+        <p class="planet-map-title">🌍 EL PLANETA AETHORIS</p>
+        <div class="planet-svg-wrapper">
+            <svg class="planet-svg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Fondo espacial del planeta -->
+                    <radialGradient id="planet-ocean" cx="45%" cy="40%" r="60%">
+                        <stop offset="0%" stop-color="#0d2a4a" />
+                        <stop offset="50%" stop-color="#082033" />
+                        <stop offset="100%" stop-color="#020d1a" />
+                    </radialGradient>
+                    <!-- Efecto atmosférico exterior -->
+                    <radialGradient id="atmo-glow" cx="50%" cy="50%" r="50%">
+                        <stop offset="82%" stop-color="transparent" />
+                        <stop offset="90%" stop-color="rgba(100, 160, 255, 0.12)" />
+                        <stop offset="100%" stop-color="rgba(60, 120, 220, 0.22)" />
+                    </radialGradient>
+                    <!-- Gradientes de continentes -->
+                    <radialGradient id="g-litharya" cx="40%" cy="35%" r="65%">
+                        <stop offset="0%" stop-color="#4C9A43" />
+                        <stop offset="100%" stop-color="#1a3d16" />
+                    </radialGradient>
+                    <radialGradient id="g-drakkonia" cx="60%" cy="40%" r="65%">
+                        <stop offset="0%" stop-color="#C0392B" />
+                        <stop offset="100%" stop-color="#4a0e0e" />
+                    </radialGradient>
+                    <radialGradient id="g-xylos" cx="50%" cy="40%" r="65%">
+                        <stop offset="0%" stop-color="#1a8a8a" />
+                        <stop offset="100%" stop-color="#073a3a" />
+                    </radialGradient>
+                    <radialGradient id="g-unknown" cx="50%" cy="50%" r="60%">
+                        <stop offset="0%" stop-color="#6b6b6b" />
+                        <stop offset="100%" stop-color="#2a2a2a" />
+                    </radialGradient>
+                    <!-- Clip para mantener todo dentro del círculo del planeta -->
+                    <clipPath id="planet-clip">
+                        <circle cx="450" cy="450" r="390" />
+                    </clipPath>
+                    <!-- Filtro suave para suavizar bordes de continentes -->
+                    <filter id="land-shadow">
+                        <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.6" />
+                    </filter>
+                    <filter id="label-shadow">
+                        <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#000" flood-opacity="0.9" />
+                    </filter>
+                </defs>
+
+                <!-- === BASE DEL PLANETA (Océano) === -->
+                <circle cx="450" cy="450" r="395" fill="rgba(2,18,38,0.9)" />
+                <circle cx="450" cy="450" r="390" fill="url(#planet-ocean)" />
+
+                <!-- Grupo clipeado al círculo -->
+                <g clip-path="url(#planet-clip)">
+
+                    <!-- Líneas de latitud sutiles (efecto curvatura) -->
+                    <ellipse cx="450" cy="450" rx="388" ry="100" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+                    <ellipse cx="450" cy="450" rx="388" ry="220" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+                    <ellipse cx="450" cy="450" rx="388" ry="340" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+
+                    <!-- ============================================ -->
+                    <!-- CONTINENTE 1: LITHARYA (noroeste, grande)    -->
+                    <!-- ============================================ -->
+                    <g filter="url(#land-shadow)">
+                        <path d="M 170,220 C 190,150 270,130 350,145 C 420,155 480,170 510,220 C 540,265 535,310 510,360
+                                 C 490,400 465,430 440,450 C 415,470 380,475 350,465
+                                 C 305,450 260,420 225,385 C 185,345 155,290 170,220 Z"
+                              fill="url(#g-litharya)" stroke="#2a6e24" stroke-width="1.5" opacity="0.92"/>
+                        <!-- Sub-reinos de Litharya (zonas coloreadas sutiles) -->
+                        <!-- Cyrion (norte) -->
+                        <path d="M 230,185 C 290,155 380,155 440,195 C 465,215 480,240 470,265 C 420,230 330,215 255,230 C 230,220 215,200 230,185 Z"
+                              fill="rgba(79,170,218,0.35)" stroke="rgba(79,170,218,0.6)" stroke-width="1" opacity="0.8"/>
+                        <!-- Vespera (este) -->
+                        <path d="M 470,265 C 510,290 530,330 515,365 C 495,400 470,425 448,445 C 445,410 455,375 460,340 C 465,310 468,285 470,265 Z"
+                              fill="rgba(139,44,56,0.35)" stroke="rgba(139,44,56,0.6)" stroke-width="1" opacity="0.8"/>
+                        <!-- Ulthor (sur) -->
+                        <path d="M 300,450 C 330,470 380,475 415,462 C 435,455 445,445 448,445 C 440,460 420,470 390,475 C 355,480 310,468 285,455 C 275,450 280,445 300,450 Z"
+                              fill="rgba(221,160,42,0.35)" stroke="rgba(221,160,42,0.6)" stroke-width="1" opacity="0.8"/>
+                        <!-- Aeloreas (oeste) -->
+                        <path d="M 170,220 C 175,280 185,350 225,385 C 250,405 280,420 310,435 C 280,430 245,405 220,375 C 190,340 168,295 175,250 Z"
+                              fill="rgba(76,154,67,0.35)" stroke="rgba(76,154,67,0.6)" stroke-width="1" opacity="0.8"/>
+                    </g>
+
+                    <!-- === Labels de LITHARYA === -->
+                    <text x="340" y="305" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-weight="700"
+                          fill="#fff" filter="url(#label-shadow)" opacity="0.95">LITHARYA</text>
+                    <!-- Sub-reinos (pequeños) -->
+                    <text x="340" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a8d8f0" filter="url(#label-shadow)" opacity="0.85">Cyrion</text>
+                    <text x="492" y="345" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#d4808a" filter="url(#label-shadow)" opacity="0.85">Vespera</text>
+                    <text x="380" y="470" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#e8c26a" filter="url(#label-shadow)" opacity="0.85">Ulthor</text>
+                    <text x="195" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#90c885" filter="url(#label-shadow)" opacity="0.85">Aeloreas</text>
+                    <!-- Valeroth centro -->
+                    <circle cx="355" cy="325" r="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                    <text x="355" y="329" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#fff" filter="url(#label-shadow)" opacity="0.9">Valeroth</text>
+
+                    <!-- ============================================ -->
+                    <!-- CONTINENTE 2: DRAKKONIA (noreste)           -->
+                    <!-- ============================================ -->
+                    <g filter="url(#land-shadow)">
+                        <path d="M 590,160 C 640,140 710,155 750,190 C 790,225 800,275 780,320
+                                 C 760,360 720,380 680,375 C 640,370 600,345 575,305
+                                 C 548,262 545,195 590,160 Z"
+                              fill="url(#g-drakkonia)" stroke="#8b1a1a" stroke-width="1.5" opacity="0.92"/>
+                        <!-- Ton'arak zona norte -->
+                        <path d="M 600,165 C 640,148 700,158 735,185 C 710,175 660,168 615,180 Z"
+                              fill="rgba(180,60,60,0.4)" stroke="rgba(200,80,80,0.6)" stroke-width="1"/>
+                        <!-- Ton'veth zona sur -->
+                        <path d="M 575,310 C 600,345 640,370 678,372 C 655,370 620,355 600,335 C 585,320 578,315 575,310 Z"
+                              fill="rgba(130,30,30,0.4)" stroke="rgba(160,50,50,0.6)" stroke-width="1"/>
+                    </g>
+                    <!-- Labels DRAKKONIA -->
+                    <text x="678" y="270" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700"
+                          fill="#fff" filter="url(#label-shadow)" opacity="0.95">DRAKKONIA</text>
+                    <text x="680" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#f4a0a0" filter="url(#label-shadow)" opacity="0.85">Ton'arak</text>
+                    <text x="650" y="355" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#f4a0a0" filter="url(#label-shadow)" opacity="0.85">Ton'veth</text>
+
+                    <!-- ============================================ -->
+                    <!-- CONTINENTE 3: XYLOS (sur-centro, archipiélago + cuerpo central) -->
+                    <!-- ============================================ -->
+                    <g filter="url(#land-shadow)">
+                        <!-- Cuerpo principal de Xylos -->
+                        <path d="M 360,560 C 390,535 440,525 490,535 C 535,545 570,575 580,615
+                                 C 590,655 570,695 535,715 C 500,732 455,730 420,715
+                                 C 380,698 355,665 352,625 C 349,593 348,575 360,560 Z"
+                              fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1.5" opacity="0.9"/>
+                        <!-- Islas/territorios alrededor -->
+                        <ellipse cx="300" cy="590" rx="28" ry="18" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                        <ellipse cx="260" cy="645" rx="22" ry="14" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                        <ellipse cx="290" cy="700" rx="30" ry="16" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                        <ellipse cx="620" cy="570" rx="25" ry="15" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                        <ellipse cx="640" cy="625" rx="20" ry="13" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                        <ellipse cx="610" cy="675" rx="26" ry="15" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                        <ellipse cx="450" cy="748" rx="35" ry="18" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1" opacity="0.85"/>
+                    </g>
+                    <!-- Labels XYLOS -->
+                    <text x="468" y="635" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700"
+                          fill="#fff" filter="url(#label-shadow)" opacity="0.95">XYLOS</text>
+                    <text x="300" y="594" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Ildran</text>
+                    <text x="260" y="649" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Osse</text>
+                    <text x="290" y="704" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Tethys</text>
+                    <text x="621" y="574" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Soryn</text>
+                    <text x="641" y="629" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Velun</text>
+                    <text x="611" y="679" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Karath</text>
+                    <text x="450" y="751" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Azara</text>
+
+                    <!-- ============================================ -->
+                    <!-- CONTINENTE 4: SIN NOMBRE (suroeste, gris)  -->
+                    <!-- ============================================ -->
+                    <g filter="url(#land-shadow)">
+                        <path d="M 100,580 C 115,545 155,525 200,530 C 240,535 265,560 270,595
+                                 C 275,630 255,665 220,680 C 185,695 145,685 120,658
+                                 C 95,630 85,610 100,580 Z"
+                              fill="url(#g-unknown)" stroke="#444" stroke-width="1.5" opacity="0.88"/>
+                        <ellipse cx="145" cy="730" rx="35" ry="20" fill="url(#g-unknown)" stroke="#444" stroke-width="1" opacity="0.8"/>
+                    </g>
+                    <!-- Label continente desconocido -->
+                    <text x="185" y="608" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700"
+                          fill="#aaa" filter="url(#label-shadow)" opacity="0.85">???</text>
+                    <text x="185" y="622" text-anchor="middle" font-family="Georgia,serif" font-size="8"
+                          fill="#888" filter="url(#label-shadow)" opacity="0.8" font-style="italic">desconocido</text>
+
+                    <!-- Nubes decorativas sutiles -->
+                    <ellipse cx="200" cy="160" rx="80" ry="22" fill="rgba(255,255,255,0.04)" />
+                    <ellipse cx="620" cy="500" rx="60" ry="16" fill="rgba(255,255,255,0.03)" />
+                    <ellipse cx="400" cy="780" rx="90" ry="18" fill="rgba(255,255,255,0.035)" />
+
+                </g>
+
+                <!-- === BORDE Y ATMÓSFERA DEL PLANETA === -->
+                <circle cx="450" cy="450" r="390" fill="url(#atmo-glow)" />
+                <!-- Borde del planeta con brillo dorado/rojo -->
+                <circle cx="450" cy="450" r="390" fill="none" stroke="rgba(169,100,20,0.4)" stroke-width="2"/>
+                <circle cx="450" cy="450" r="393" fill="none" stroke="rgba(100,60,10,0.15)" stroke-width="3"/>
+
+                <!-- Brillo de luz estelar (reflejo superior-izquierdo) -->
+                <ellipse cx="310" cy="270" rx="110" ry="65" fill="rgba(255,255,255,0.04)" transform="rotate(-25,310,270)" />
+            </svg>
+        </div>
+
+        <!-- Leyenda del mapa -->
+        <div class="planet-legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#3a7a35;"></div>
+                <span>Litharya</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#9b2020;"></div>
+                <span>Drakkonia</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#0e6e6e;"></div>
+                <span>Xylos</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#555;"></div>
+                <span>Desconocido</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="worldbuilding-hero">
         <div class="hero-content">
