@@ -36,6 +36,16 @@ export class WorldbuildingComponent {
     this.hoveredContinent = null;
   }
 
+  getActiveContColor(): string {
+    const colors: Record<string, string> = {
+      litharya: '#4C9A43',
+      drakkonia: '#C0392B',
+      xylos: '#1a8a8a',
+      unknown: '#666'
+    };
+    return this.hoveredContinent ? (colors[this.hoveredContinent] ?? 'var(--primary-red)') : 'var(--primary-red)';
+  }
+
   // Datos de los meses
   months = {
     winter: [

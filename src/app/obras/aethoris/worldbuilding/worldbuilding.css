@@ -1,3 +1,6 @@
+/* =============================================
+   WORLDBUILDING PAGE — BASE
+   ============================================= */
 .worldbuilding-page {
   min-height: 100vh;
   background-color: var(--dark-bg);
@@ -11,7 +14,362 @@
   to { opacity: 1; }
 }
 
-/* Hero Section */
+/* =============================================
+   MAPA DE AETHORIS — igual patrón que Litharya
+   ============================================= */
+.aethoris-map-hero {
+  position: relative;
+  background-color: #0b0506;
+  background-image: radial-gradient(circle at center, #1a0a0c 0%, #0b0506 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem 3rem;
+  overflow-x: hidden;
+  border-radius: 24px;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(169, 17, 1, 0.2);
+}
+
+.aethoris-map-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.aethoris-map-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-style: italic;
+  color: var(--gold-accent);
+  margin-bottom: 0.4rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.aethoris-map-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Layout: SVG izquierda + panel derecha */
+.aethoris-map-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Contenedor SVG */
+.aethoris-svg-container {
+  flex: 1.2;
+  max-width: 800px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+}
+
+.aethoris-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border-radius: 8px;
+}
+
+/* Imagen base del mapa */
+.base-map-img {
+  opacity: 0.88;
+  transition: opacity 0.5s;
+}
+
+.aethoris-svg-container:hover .base-map-img {
+  opacity: 1;
+}
+
+/* Grupos de continente */
+.a-realm-group {
+  cursor: crosshair;
+}
+
+/* Regiones: transparentes por defecto, se colorean en hover */
+.a-region {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* LITHARYA — verde */
+.a-realm-group:hover .a-litharya,
+.a-litharya.a-active-path {
+  fill: rgba(76, 154, 67, 0.28);
+  stroke: #4C9A43;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 14px rgba(76, 154, 67, 0.85));
+  transform: scale(1.015);
+  transform-origin: center center;
+}
+
+/* DRAKKONIA — rojo */
+.a-realm-group:hover .a-drakkonia,
+.a-drakkonia.a-active-path {
+  fill: rgba(192, 57, 43, 0.28);
+  stroke: #C0392B;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 14px rgba(192, 57, 43, 0.85));
+  transform: scale(1.015);
+  transform-origin: center center;
+}
+
+/* XYLOS — teal */
+.a-realm-group:hover .a-xylos,
+.a-xylos.a-active-path {
+  fill: rgba(26, 138, 138, 0.28);
+  stroke: #1a8a8a;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 14px rgba(26, 138, 138, 0.85));
+  transform: scale(1.015);
+  transform-origin: center center;
+}
+
+/* DESCONOCIDO — gris */
+.a-realm-group:hover .a-unknown,
+.a-unknown.a-active-path {
+  fill: rgba(120, 120, 120, 0.25);
+  stroke: #888;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 12px rgba(150, 150, 150, 0.7));
+  transform: scale(1.015);
+  transform-origin: center center;
+}
+
+/* Sub-regiones (zonas internas de cada continente) */
+.a-subregion {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.a-cyrion.a-subactive { fill: rgba(79, 170, 218, 0.3); stroke: rgba(79, 170, 218, 0.6); }
+.a-vespera.a-subactive { fill: rgba(139, 44, 56, 0.3); stroke: rgba(139, 44, 56, 0.6); }
+.a-ulthor.a-subactive { fill: rgba(221, 160, 42, 0.3); stroke: rgba(221, 160, 42, 0.6); }
+.a-aeloreas.a-subactive { fill: rgba(76, 154, 67, 0.3); stroke: rgba(76, 154, 67, 0.6); }
+.a-tonarak.a-subactive { fill: rgba(180, 60, 60, 0.35); stroke: rgba(200, 80, 80, 0.6); }
+.a-tonveth.a-subactive { fill: rgba(130, 30, 30, 0.35); stroke: rgba(160, 50, 50, 0.6); }
+
+/* Textos sobre el mapa */
+.a-realm-text {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  fill: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.a-realm-group:hover .a-realm-text {
+  fill: rgba(255, 255, 255, 1);
+  font-size: 24px;
+}
+
+.a-main-title {
+  text-anchor: middle;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.a-unknown-title {
+  text-anchor: middle;
+  font-size: 20px;
+  fill: rgba(160, 160, 160, 0.45);
+}
+
+.a-realm-group:hover .a-unknown-title {
+  fill: rgba(180, 180, 180, 1);
+}
+
+.a-city-dot {
+  fill: rgba(255, 255, 255, 0.8);
+  stroke: #000;
+  stroke-width: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.a-city-text {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  fill: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  text-anchor: middle;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+
+.a-realm-group:hover .a-city-dot,
+.a-realm-group:hover .a-city-text {
+  opacity: 1;
+}
+
+/* Valeroth (centro especial) */
+.a-valeroth-dot {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.a-valeroth-text {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  fill: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  text-anchor: middle;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.a-realm-group:hover .a-valeroth-dot,
+.a-realm-group:hover .a-valeroth-text {
+  opacity: 1;
+}
+
+/* =============================================
+   PANEL DE INFO (derecha del mapa)
+   ============================================= */
+.aethoris-info-panel {
+  flex: 0.8;
+  background: rgba(26, 10, 12, 0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--primary-red);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  min-height: 480px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.aethoris-info-panel.has-content {
+  border-top-width: 4px;
+}
+
+.a-empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 400px;
+  color: var(--muted-text);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+  animation: pulse 3s infinite;
+}
+
+.a-realm-info {
+  animation: fadeInRight 0.4s ease;
+}
+
+.a-info-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-red);
+}
+
+.a-info-title {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+
+.a-info-subtitle {
+  font-family: var(--font-sans);
+  color: #fff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.a-info-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.a-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.a-desc-row {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.a-info-label {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.a-info-list {
+  list-style: none;
+  padding: 0 0 0 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.a-info-list li {
+  position: relative;
+  color: #d1d1d1;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.a-info-list li::before {
+  content: '♦';
+  position: absolute;
+  left: -1rem;
+  color: var(--primary-red);
+  font-size: 0.75rem;
+  top: 2px;
+}
+
+.a-info-desc {
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  color: #ccc;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* =============================================
+   HERO SECTION (debajo del mapa)
+   ============================================= */
 .worldbuilding-hero {
   text-align: center;
   padding: 4rem 2rem;
@@ -47,9 +405,7 @@
   transition: width 0.3s ease;
 }
 
-.worldbuilding-hero:hover .hero-divider {
-  width: 120px;
-}
+.worldbuilding-hero:hover .hero-divider { width: 120px; }
 
 .hero-description {
   color: #bfaea0;
@@ -59,7 +415,9 @@
   text-align: justify;
 }
 
-/* General sections */
+/* =============================================
+   GENERAL SECTIONS
+   ============================================= */
 section {
   max-width: 1200px;
   margin: 0 auto 4rem;
@@ -86,9 +444,7 @@ section {
   transition: width 0.3s;
 }
 
-.section-header:hover .section-divider {
-  width: 100px;
-}
+.section-header:hover .section-divider { width: 100px; }
 
 .section-subtitle {
   color: var(--gold-accent);
@@ -97,7 +453,9 @@ section {
   letter-spacing: 2px;
 }
 
-/* Ficha técnica */
+/* =============================================
+   FICHA TÉCNICA
+   ============================================= */
 .ficha-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -114,7 +472,6 @@ section {
   align-items: center;
   border-left: 3px solid var(--primary-red);
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  cursor: default;
 }
 
 .ficha-card:hover {
@@ -136,7 +493,9 @@ section {
   font-weight: bold;
 }
 
-/* Soles */
+/* =============================================
+   SOLES Y LUNAS (cards)
+   ============================================= */
 .suns-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -159,17 +518,13 @@ section {
 .sun-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   transition: left 0.6s;
 }
 
-.sun-card:hover::before {
-  left: 100%;
-}
+.sun-card:hover::before { left: 100%; }
 
 .sun-card:hover {
   transform: translateY(-8px) scale(1.02);
@@ -185,9 +540,7 @@ section {
   transition: text-shadow 0.3s;
 }
 
-.sun-card:hover .sun-name {
-  text-shadow: 0 0 8px rgba(212,175,55,0.5);
-}
+.sun-card:hover .sun-name { text-shadow: 0 0 8px rgba(212,175,55,0.5); }
 
 .sun-type {
   font-size: 0.85rem;
@@ -211,11 +564,25 @@ section {
   transition: opacity 0.3s;
 }
 
-.sun-card:hover .card-hint {
-  opacity: 1;
+.sun-card:hover .card-hint { opacity: 1; }
+
+/* Moon cards — acento azul */
+.moon-card {
+  background: linear-gradient(135deg, rgba(30, 30, 80, 0.25), rgba(0, 0, 0, 0.4)) !important;
+  border-color: rgba(100, 100, 200, 0.3) !important;
 }
 
-/* Estaciones */
+.moon-card:hover {
+  border-color: rgba(150, 150, 255, 0.6) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(100,100,200,0.4) !important;
+}
+
+.moon-card .sun-name { color: #c8c8ff; }
+.moon-card .sun-type { color: #8888cc; }
+
+/* =============================================
+   ESTACIONES / CICLO SOLAR
+   ============================================= */
 .estaciones-box {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 20px;
@@ -249,7 +616,6 @@ section {
   text-align: center;
   font-size: 0.9rem;
   transition: all 0.3s;
-  cursor: default;
 }
 
 .estacion:hover {
@@ -257,72 +623,9 @@ section {
   transform: scale(1.02);
 }
 
-/* Lunas */
-.moons-table {
-  background: rgba(26, 10, 12, 0.7);
-  border-radius: 20px;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-  transition: box-shadow 0.3s;
-}
-
-.moons-table:hover {
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-.moons-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr 2fr;
-  background: rgba(169, 17, 1, 0.3);
-  padding: 1rem 1.2rem;
-  font-weight: bold;
-  color: var(--gold-accent);
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-}
-
-.moons-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr 2fr;
-  padding: 0.9rem 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.moons-row:hover {
-  background: rgba(169, 17, 1, 0.25);
-  transform: translateX(5px);
-  border-left: 3px solid var(--gold-accent);
-}
-
-.moon-name {
-  font-weight: bold;
-  color: var(--gold-accent);
-  transition: color 0.2s;
-}
-
-.moons-row:hover .moon-name {
-  color: #fff;
-  text-shadow: 0 0 4px var(--gold-accent);
-}
-
-.moons-note {
-  text-align: center;
-  margin-top: 1.2rem;
-  font-size: 0.85rem;
-  color: var(--gold-accent);
-  font-style: italic;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-}
-
-.moons-note:hover {
-  opacity: 1;
-}
-
-/* Calendario */
+/* =============================================
+   CALENDARIO
+   ============================================= */
 .seasons-container {
   display: flex;
   flex-direction: column;
@@ -367,7 +670,6 @@ section {
   border-radius: 16px;
   padding: 1.2rem;
   transition: all 0.3s;
-  cursor: default;
 }
 
 .month-card:hover {
@@ -395,7 +697,9 @@ section {
   display: block;
 }
 
-/* Glosario */
+/* =============================================
+   GLOSARIO
+   ============================================= */
 .glosario-placeholder {
   background: rgba(26, 10, 12, 0.6);
   border-radius: 24px;
@@ -418,12 +722,13 @@ section {
   margin-bottom: 0.5rem;
 }
 
+/* =============================================
+   MODAL — MÉTODO FLEX COLUMN (funciona en mobile)
+   ============================================= */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.92);
   backdrop-filter: blur(12px);
   z-index: 9999;
@@ -461,10 +766,8 @@ section {
 
 .modal-close {
   position: absolute;
-  top: 0.6rem;
-  right: 0.8rem;
-  background: none;
-  border: none;
+  top: 0.6rem; right: 0.8rem;
+  background: none; border: none;
   color: #fff;
   font-size: 1.8rem;
   line-height: 1;
@@ -508,290 +811,45 @@ section {
   display: block;
 }
 
-@keyframes fadeInModal {
-  from { opacity: 0; backdrop-filter: blur(0); }
-  to { opacity: 1; backdrop-filter: blur(12px); }
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.modal-content {
-  position: relative;
-  background: linear-gradient(135deg, #1f0c10, #0a0305);
-  border-radius: 28px;
-  padding: 2rem;
-  width: 95vw;
-  max-width: 600px;
-  max-height: 92dvh;
-  overflow-y: auto;
-  text-align: center;
-  border: 1px solid var(--primary-red);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-  animation: zoomIn 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  box-sizing: border-box;
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.modal-close {
-  position: absolute;
-  top: 0.8rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 10;
-  line-height: 1;
-}
-
-.modal-close:hover {
-  color: var(--primary-red);
-  transform: rotate(90deg);
-}
-
-.modal-title {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--gold-accent);
-  margin-bottom: 1rem;
-  padding-top: 0.5rem;
-}
-
-.modal-image {
-  width: 100%;
-  max-width: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  display: block;
-  margin: 0 auto;
-}
-
-/* Planet Map - Layout interactivo */
-.planet-map-section {
-  max-width: 1200px;
-  margin: 0 auto 4rem;
-  text-align: center;
-}
-
-.planet-map-title {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--gold-accent);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  opacity: 0.8;
-}
-
-.planet-legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.8rem 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  color: #ccc;
-  letter-spacing: 1px;
-}
-
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-
-.planet-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  margin: 1rem auto 0;
-}
-
-.planet-svg-wrapper {
-  flex: 1.2;
-  max-width: 560px;
-  filter: drop-shadow(0 0 40px rgba(169, 17, 1, 0.2)) drop-shadow(0 20px 60px rgba(0,0,0,0.9));
-}
-
-.planet-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Panel de información del planeta */
-.planet-info-panel {
-  flex: 0.9;
-  min-width: 220px;
-  max-width: 340px;
-  background: rgba(12, 5, 10, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(169, 17, 1, 0.3);
-  border-radius: 16px;
-  padding: 1.8rem 1.5rem;
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.3s ease;
-}
-
-.planet-panel-visible {
-  border-color: rgba(169, 17, 1, 0.7);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-}
-
-.planet-panel-empty {
-  text-align: center;
-  color: var(--muted-text);
-  font-family: var(--font-serif);
-  font-style: italic;
-  animation: pulse 3s infinite;
-}
-
-.planet-panel-icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 0.8rem;
-}
-
-.planet-panel-content {
-  width: 100%;
-  border-top: 3px solid;
-  padding-top: 1rem;
-  animation: fadeInRight 0.3s ease;
-}
-
-.planet-panel-title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-
-.planet-panel-sub {
-  font-size: 0.8rem;
-  color: #bfaea0;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-.planet-panel-kingdoms {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.pkingdom {
-  background: rgba(255,255,255,0.04);
-  border-left: 3px solid;
-  padding: 0.4rem 0.7rem;
-  border-radius: 4px;
-  font-size: 0.82rem;
-  color: #ddd;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.pkingdom strong {
-  color: #fff;
-}
-
-.pkingdom span {
-  font-size: 0.72rem;
-  color: #aaa;
-}
-
-.planet-panel-desc {
-  font-size: 0.82rem;
-  color: #aaa;
-  line-height: 1.6;
-  font-style: italic;
-  margin-top: 0.8rem;
-}
-
-/* Imagen artística del planeta */
-.planet-art-wrapper {
-  margin-top: 2.5rem;
-  text-align: center;
-}
-
-.planet-art-image {
-  max-width: 100%;
-  width: 700px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(169,17,1,0.2);
-  border: 1px solid rgba(169, 17, 1, 0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.planet-art-image:hover {
-  transform: scale(1.015);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.9), 0 0 50px rgba(169,17,1,0.35);
-}
-
-/* Moon card color accent */
-.moon-card {
-  background: linear-gradient(135deg, rgba(30, 30, 80, 0.25), rgba(0, 0, 0, 0.4)) !important;
-  border-color: rgba(100, 100, 200, 0.3) !important;
-}
-
-.moon-card:hover {
-  border-color: rgba(150, 150, 255, 0.6) !important;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(100,100,200,0.4) !important;
-}
-
-.moon-card .sun-name {
-  color: #c8c8ff;
-}
-
-.moon-card .sun-type {
-  color: #8888cc;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .planet-layout {
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 992px) {
+  .aethoris-map-layout {
     flex-direction: column;
-    align-items: center;
   }
-  .planet-info-panel {
-    max-width: 100%;
+
+  .aethoris-info-panel {
     width: 100%;
-    min-height: 180px;
     flex: auto;
+    min-height: 260px;
   }
-  .planet-svg-wrapper {
-    max-width: 520px;
-    width: 100%;
+
+  .a-empty-state {
+    min-height: 200px;
   }
 }
 
 @media (max-width: 768px) {
   .worldbuilding-page { padding: 5rem 1rem 1rem; }
+  .aethoris-map-hero { padding: 1.5rem 1rem 2rem; border-radius: 0; }
+  .aethoris-map-title { font-size: 2.5rem; }
   .hero-title { font-size: 2.2rem; }
   .section-title { font-size: 1.6rem; }
   .modal-title { font-size: 1.3rem; }
-  .planet-map-title { font-size: 1.2rem; }
-  .planet-art-image { width: 100%; }
+  .a-info-title { font-size: 1.8rem; }
 }

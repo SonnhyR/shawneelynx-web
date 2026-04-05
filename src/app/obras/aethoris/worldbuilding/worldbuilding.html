@@ -1,244 +1,255 @@
 <div class="worldbuilding-page">
 
-    <!-- MAPA DEL PLANETA AETHORIS -->
-    <section class="planet-map-section">
-        <p class="planet-map-title">🌍 EL PLANETA AETHORIS</p>
-        <div class="planet-layout">
-            <!-- SVG Planeta Interactivo -->
-            <div class="planet-svg-wrapper">
-                <svg class="planet-svg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- MAPA DEL PLANETA AETHORIS — imagen base + overlays interactivos -->
+    <section class="aethoris-map-hero">
+        <div class="aethoris-map-header">
+            <h2 class="aethoris-map-title">Aethoris</h2>
+            <p class="aethoris-map-subtitle">Explora el Planeta</p>
+        </div>
+
+        <div class="aethoris-map-layout">
+            <!-- Mapa SVG con imagen base -->
+            <div class="aethoris-svg-container">
+                <svg viewBox="0 0 1000 1000" class="aethoris-svg">
+
+                    <!-- IMAGEN BASE: aethoris.png como fondo del mapa -->
+                    <image href="/assets/images/aethoris.png"
+                           x="0" y="0" width="1000" height="1000"
+                           preserveAspectRatio="xMidYMid slice"
+                           class="base-map-img" />
+
                     <defs>
-                        <radialGradient id="planet-ocean" cx="45%" cy="40%" r="60%">
-                            <stop offset="0%" stop-color="#0d2a4a" />
-                            <stop offset="50%" stop-color="#082033" />
-                            <stop offset="100%" stop-color="#020d1a" />
-                        </radialGradient>
-                        <radialGradient id="atmo-glow" cx="50%" cy="50%" r="50%">
-                            <stop offset="82%" stop-color="transparent" />
-                            <stop offset="90%" stop-color="rgba(100, 160, 255, 0.12)" />
-                            <stop offset="100%" stop-color="rgba(60, 120, 220, 0.22)" />
-                        </radialGradient>
-                        <radialGradient id="g-litharya" cx="40%" cy="35%" r="65%">
+                        <!-- Color fills para hover -->
+                        <radialGradient id="a-grad-litharya" cx="40%" cy="35%" r="70%">
                             <stop offset="0%" stop-color="#4C9A43" />
                             <stop offset="100%" stop-color="#1a3d16" />
                         </radialGradient>
-                        <radialGradient id="g-drakkonia" cx="60%" cy="40%" r="65%">
+                        <radialGradient id="a-grad-drakkonia" cx="60%" cy="40%" r="70%">
                             <stop offset="0%" stop-color="#C0392B" />
-                            <stop offset="100%" stop-color="#4a0e0e" />
+                            <stop offset="100%" stop-color="#5a0e0e" />
                         </radialGradient>
-                        <radialGradient id="g-xylos" cx="50%" cy="40%" r="65%">
+                        <radialGradient id="a-grad-xylos" cx="50%" cy="40%" r="70%">
                             <stop offset="0%" stop-color="#1a8a8a" />
-                            <stop offset="100%" stop-color="#073a3a" />
+                            <stop offset="100%" stop-color="#063333" />
                         </radialGradient>
-                        <radialGradient id="g-unknown" cx="50%" cy="50%" r="60%">
-                            <stop offset="0%" stop-color="#6b6b6b" />
-                            <stop offset="100%" stop-color="#2a2a2a" />
+                        <radialGradient id="a-grad-unknown" cx="50%" cy="50%" r="60%">
+                            <stop offset="0%" stop-color="#777" />
+                            <stop offset="100%" stop-color="#222" />
                         </radialGradient>
-                        <clipPath id="planet-clip">
-                            <circle cx="450" cy="450" r="390" />
-                        </clipPath>
-                        <filter id="land-shadow">
-                            <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.6" />
-                        </filter>
-                        <filter id="label-shadow">
-                            <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#000" flood-opacity="0.9" />
-                        </filter>
-                        <filter id="glow-green">
-                            <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#4C9A43" flood-opacity="1" />
-                        </filter>
-                        <filter id="glow-red">
-                            <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#C0392B" flood-opacity="1" />
-                        </filter>
-                        <filter id="glow-teal">
-                            <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#1a8a8a" flood-opacity="1" />
-                        </filter>
-                        <filter id="glow-grey">
-                            <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#999" flood-opacity="0.8" />
+                        <filter id="a-topography">
+                            <feDropShadow dx="3" dy="15" stdDeviation="10" flood-color="#000" flood-opacity="0.8" />
                         </filter>
                     </defs>
 
-                    <!-- Base del planeta -->
-                    <circle cx="450" cy="450" r="395" fill="rgba(2,18,38,0.9)" />
-                    <circle cx="450" cy="450" r="390" fill="url(#planet-ocean)" />
+                    <g class="aethoris-regions-group">
 
-                    <g clip-path="url(#planet-clip)">
-                        <!-- Líneas de latitud -->
-                        <ellipse cx="450" cy="450" rx="388" ry="100" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
-                        <ellipse cx="450" cy="450" rx="388" ry="220" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
-                        <ellipse cx="450" cy="450" rx="388" ry="340" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
-
-                        <!-- LITHARYA -->
-                        <g style="cursor:pointer"
+                        <!-- LITHARYA — Noroeste del planeta -->
+                        <g class="a-realm-group"
                            (mouseenter)="setHoveredContinent('litharya')"
                            (mouseleave)="clearHoveredContinent()">
-                            <path d="M 170,220 C 190,150 270,130 350,145 C 420,155 480,170 510,220 C 540,265 535,310 510,360 C 490,400 465,430 440,450 C 415,470 380,475 350,465 C 305,450 260,420 225,385 C 185,345 155,290 170,220 Z"
-                                  fill="url(#g-litharya)" stroke="#2a6e24" stroke-width="1.5"
-                                  [attr.filter]="hoveredContinent === 'litharya' ? 'url(#glow-green)' : 'url(#land-shadow)'"
-                                  [attr.opacity]="hoveredContinent && hoveredContinent !== 'litharya' ? '0.4' : '0.92'"
-                                  style="transition: opacity 0.35s;"/>
-                            <path d="M 230,185 C 290,155 380,155 440,195 C 465,215 480,240 470,265 C 420,230 330,215 255,230 C 230,220 215,200 230,185 Z"
-                                  fill="rgba(79,170,218,0.35)" stroke="rgba(79,170,218,0.6)" stroke-width="1" opacity="0.8"/>
-                            <path d="M 470,265 C 510,290 530,330 515,365 C 495,400 470,425 448,445 C 445,410 455,375 460,340 C 465,310 468,285 470,265 Z"
-                                  fill="rgba(139,44,56,0.35)" stroke="rgba(139,44,56,0.6)" stroke-width="1" opacity="0.8"/>
-                            <path d="M 300,450 C 330,470 380,475 415,462 C 435,455 445,445 448,445 C 440,460 420,470 390,475 C 355,480 310,468 285,455 C 275,450 280,445 300,450 Z"
-                                  fill="rgba(221,160,42,0.35)" stroke="rgba(221,160,42,0.6)" stroke-width="1" opacity="0.8"/>
-                            <path d="M 170,220 C 175,280 185,350 225,385 C 250,405 280,420 310,435 C 280,430 245,405 220,375 C 190,340 168,295 175,250 Z"
-                                  fill="rgba(76,154,67,0.35)" stroke="rgba(76,154,67,0.6)" stroke-width="1" opacity="0.8"/>
-                            <text x="340" y="305" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-weight="700" fill="#fff" filter="url(#label-shadow)" opacity="0.95">LITHARYA</text>
-                            <text x="340" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a8d8f0" filter="url(#label-shadow)" opacity="0.85">Cyrion</text>
-                            <text x="492" y="345" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#d4808a" filter="url(#label-shadow)" opacity="0.85">Vespera</text>
-                            <text x="380" y="470" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#e8c26a" filter="url(#label-shadow)" opacity="0.85">Ulthor</text>
-                            <text x="195" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#90c885" filter="url(#label-shadow)" opacity="0.85">Aeloreas</text>
-                            <circle cx="355" cy="325" r="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-                            <text x="355" y="329" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#fff" filter="url(#label-shadow)" opacity="0.9">Valeroth</text>
+                            <path d="M 80,100 C 120,50 220,40 320,60 C 420,80 500,130 520,210
+                                     C 540,285 510,355 470,410 C 430,460 370,490 305,490
+                                     C 230,490 160,455 115,400 C 65,340 40,220 80,100 Z"
+                                  class="a-region a-litharya"
+                                  [class.a-active-path]="hoveredContinent === 'litharya'" />
+                            <!-- Sub-zonas Litharya -->
+                            <path d="M 155,100 C 220,60 320,60 400,100 C 430,120 450,150 440,180
+                                     C 370,145 270,135 190,155 C 165,140 148,120 155,100 Z"
+                                  class="a-subregion a-cyrion"
+                                  [class.a-subactive]="hoveredContinent === 'litharya'" />
+                            <path d="M 450,180 C 500,220 520,275 505,330 C 485,380 455,410 435,430
+                                     C 430,390 445,350 450,310 C 455,275 454,225 450,180 Z"
+                                  class="a-subregion a-vespera"
+                                  [class.a-subactive]="hoveredContinent === 'litharya'" />
+                            <path d="M 200,470 C 235,490 280,495 320,485 C 345,478 360,465 360,465
+                                     C 345,478 310,490 275,492 C 240,494 205,480 190,468 Z"
+                                  class="a-subregion a-ulthor"
+                                  [class.a-subactive]="hoveredContinent === 'litharya'" />
+                            <path d="M 80,100 C 85,180 100,270 140,340 C 165,380 195,415 225,440
+                                     C 195,420 160,390 130,350 C 95,300 72,210 80,150 Z"
+                                  class="a-subregion a-aeloreas"
+                                  [class.a-subactive]="hoveredContinent === 'litharya'" />
+                            <!-- Labels Litharya -->
+                            <text x="302" y="288" class="a-realm-text a-main-title">Litharya</text>
+                            <text x="302" y="130" class="a-city-text">Cyrion</text>
+                            <circle cx="302" cy="150" r="5" class="a-city-dot" />
+                            <text x="475" y="300" class="a-city-text">Vespera</text>
+                            <circle cx="468" cy="285" r="4" class="a-city-dot" />
+                            <text x="280" y="485" class="a-city-text">Ulthor</text>
+                            <circle cx="280" cy="472" r="4" class="a-city-dot" />
+                            <text x="120" y="290" class="a-city-text">Aeloreas</text>
+                            <circle cx="118" cy="276" r="4" class="a-city-dot" />
+                            <!-- Valeroth centro -->
+                            <circle cx="302" cy="306" r="14" class="a-valeroth-dot" />
+                            <text x="302" y="310" class="a-valeroth-text">Valeroth</text>
                         </g>
 
-                        <!-- DRAKKONIA -->
-                        <g style="cursor:pointer"
+                        <!-- DRAKKONIA — Noreste del planeta -->
+                        <g class="a-realm-group"
                            (mouseenter)="setHoveredContinent('drakkonia')"
                            (mouseleave)="clearHoveredContinent()">
-                            <path d="M 590,160 C 640,140 710,155 750,190 C 790,225 800,275 780,320 C 760,360 720,380 680,375 C 640,370 600,345 575,305 C 548,262 545,195 590,160 Z"
-                                  fill="url(#g-drakkonia)" stroke="#8b1a1a" stroke-width="1.5"
-                                  [attr.filter]="hoveredContinent === 'drakkonia' ? 'url(#glow-red)' : 'url(#land-shadow)'"
-                                  [attr.opacity]="hoveredContinent && hoveredContinent !== 'drakkonia' ? '0.4' : '0.92'"
-                                  style="transition: opacity 0.35s;"/>
-                            <path d="M 600,165 C 640,148 700,158 735,185 C 710,175 660,168 615,180 Z"
-                                  fill="rgba(180,60,60,0.4)" stroke="rgba(200,80,80,0.6)" stroke-width="1"/>
-                            <path d="M 575,310 C 600,345 640,370 678,372 C 655,370 620,355 600,335 C 585,320 578,315 575,310 Z"
-                                  fill="rgba(130,30,30,0.4)" stroke="rgba(160,50,50,0.6)" stroke-width="1"/>
-                            <text x="678" y="270" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#fff" filter="url(#label-shadow)" opacity="0.95">DRAKKONIA</text>
-                            <text x="680" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#f4a0a0" filter="url(#label-shadow)" opacity="0.85">Ton'arak</text>
-                            <text x="650" y="355" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#f4a0a0" filter="url(#label-shadow)" opacity="0.85">Ton'veth</text>
+                            <path d="M 590,80 C 660,50 760,70 830,120 C 900,170 930,250 910,330
+                                     C 890,405 840,445 775,450 C 710,455 645,415 605,360
+                                     C 560,300 548,200 590,80 Z"
+                                  class="a-region a-drakkonia"
+                                  [class.a-active-path]="hoveredContinent === 'drakkonia'" />
+                            <!-- Sub-zonas Drakkonia -->
+                            <path d="M 605,90 C 660,58 740,72 800,112 C 775,100 720,85 668,90 Z"
+                                  class="a-subregion a-tonarak"
+                                  [class.a-subactive]="hoveredContinent === 'drakkonia'" />
+                            <path d="M 565,350 C 600,400 648,432 700,445 C 670,440 630,422 605,400
+                                     C 584,382 572,365 565,350 Z"
+                                  class="a-subregion a-tonveth"
+                                  [class.a-subactive]="hoveredContinent === 'drakkonia'" />
+                            <!-- Labels Drakkonia -->
+                            <text x="745" y="272" class="a-realm-text a-main-title">Drakkonia</text>
+                            <text x="730" y="128" class="a-city-text">Ton'arak</text>
+                            <circle cx="730" cy="115" r="4" class="a-city-dot" />
+                            <text x="700" y="428" class="a-city-text">Ton'veth</text>
+                            <circle cx="690" cy="415" r="4" class="a-city-dot" />
                         </g>
 
-                        <!-- XYLOS -->
-                        <g style="cursor:pointer"
+                        <!-- XYLOS — Sur-centro (cuerpo + islas) -->
+                        <g class="a-realm-group"
                            (mouseenter)="setHoveredContinent('xylos')"
                            (mouseleave)="clearHoveredContinent()">
-                            <path d="M 360,560 C 390,535 440,525 490,535 C 535,545 570,575 580,615 C 590,655 570,695 535,715 C 500,732 455,730 420,715 C 380,698 355,665 352,625 C 349,593 348,575 360,560 Z"
-                                  fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1.5"
-                                  [attr.filter]="hoveredContinent === 'xylos' ? 'url(#glow-teal)' : 'url(#land-shadow)'"
-                                  [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.4' : '0.9'"
-                                  style="transition: opacity 0.35s;"/>
-                            <ellipse cx="300" cy="590" rx="28" ry="18" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <ellipse cx="260" cy="645" rx="22" ry="14" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <ellipse cx="290" cy="700" rx="30" ry="16" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <ellipse cx="620" cy="570" rx="25" ry="15" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <ellipse cx="640" cy="625" rx="20" ry="13" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <ellipse cx="610" cy="675" rx="26" ry="15" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <ellipse cx="450" cy="748" rx="35" ry="18" fill="url(#g-xylos)" stroke="#0e5e5e" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'xylos' ? '0.3' : '0.85'"/>
-                            <text x="468" y="635" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#fff" filter="url(#label-shadow)" opacity="0.95">XYLOS</text>
-                            <text x="300" y="594" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Ildran</text>
-                            <text x="260" y="649" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Osse</text>
-                            <text x="290" y="704" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Tethys</text>
-                            <text x="621" y="574" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Soryn</text>
-                            <text x="641" y="629" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Velun</text>
-                            <text x="611" y="679" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Karath</text>
-                            <text x="450" y="751" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#80e0e0" filter="url(#label-shadow)">Mar'Azara</text>
+                            <!-- Cuerpo principal -->
+                            <path d="M 375,590 C 415,555 475,545 535,560 C 590,575 630,615 640,660
+                                     C 650,705 625,748 585,768 C 545,788 495,788 458,770
+                                     C 415,748 384,710 377,665 C 370,626 368,608 375,590 Z"
+                                  class="a-region a-xylos"
+                                  [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <!-- Islas Xylos -->
+                            <ellipse cx="295" cy="615" rx="35" ry="22" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <ellipse cx="252" cy="668" rx="27" ry="16" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <ellipse cx="282" cy="720" rx="32" ry="18" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <ellipse cx="658" cy="590" rx="28" ry="16" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <ellipse cx="678" cy="645" rx="22" ry="14" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <ellipse cx="655" cy="698" rx="28" ry="16" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <ellipse cx="470" cy="800" rx="40" ry="20" class="a-region a-xylos" [class.a-active-path]="hoveredContinent === 'xylos'" />
+                            <!-- Labels Xylos -->
+                            <text x="508" y="672" class="a-realm-text a-main-title">Xylos</text>
+                            <text x="295" y="619" class="a-city-text">Mar'Ildran</text>
+                            <text x="252" y="672" class="a-city-text">Mar'Osse</text>
+                            <text x="282" y="724" class="a-city-text">Mar'Tethys</text>
+                            <text x="660" y="594" class="a-city-text">Mar'Soryn</text>
+                            <text x="678" y="649" class="a-city-text">Mar'Velun</text>
+                            <text x="656" y="702" class="a-city-text">Mar'Karath</text>
+                            <text x="470" y="804" class="a-city-text">Mar'Azara</text>
                         </g>
 
-                        <!-- CONTINENTE DESCONOCIDO -->
-                        <g style="cursor:pointer"
+                        <!-- CONTINENTE DESCONOCIDO — Suroeste -->
+                        <g class="a-realm-group"
                            (mouseenter)="setHoveredContinent('unknown')"
                            (mouseleave)="clearHoveredContinent()">
-                            <path d="M 100,580 C 115,545 155,525 200,530 C 240,535 265,560 270,595 C 275,630 255,665 220,680 C 185,695 145,685 120,658 C 95,630 85,610 100,580 Z"
-                                  fill="url(#g-unknown)" stroke="#444" stroke-width="1.5"
-                                  [attr.filter]="hoveredContinent === 'unknown' ? 'url(#glow-grey)' : 'url(#land-shadow)'"
-                                  [attr.opacity]="hoveredContinent && hoveredContinent !== 'unknown' ? '0.3' : '0.88'"
-                                  style="transition: opacity 0.35s;"/>
-                            <ellipse cx="145" cy="730" rx="35" ry="20" fill="url(#g-unknown)" stroke="#444" stroke-width="1"
-                                     [attr.opacity]="hoveredContinent && hoveredContinent !== 'unknown' ? '0.25' : '0.8'"/>
-                            <text x="185" y="608" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#aaa" filter="url(#label-shadow)" opacity="0.85">???</text>
-                            <text x="185" y="622" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888" filter="url(#label-shadow)" opacity="0.8" font-style="italic">desconocido</text>
+                            <path d="M 68,560 C 88,520 135,498 188,504 C 238,510 272,540 278,578
+                                     C 284,618 262,660 225,678 C 188,698 144,688 114,658
+                                     C 82,625 50,600 68,560 Z"
+                                  class="a-region a-unknown"
+                                  [class.a-active-path]="hoveredContinent === 'unknown'" />
+                            <ellipse cx="128" cy="742" rx="40" ry="22" class="a-region a-unknown" [class.a-active-path]="hoveredContinent === 'unknown'" />
+                            <!-- Label desconocido -->
+                            <text x="178" y="598" class="a-realm-text a-unknown-title">???</text>
                         </g>
 
-                        <!-- Nubes decorativas -->
-                        <ellipse cx="200" cy="160" rx="80" ry="22" fill="rgba(255,255,255,0.04)" />
-                        <ellipse cx="620" cy="500" rx="60" ry="16" fill="rgba(255,255,255,0.03)" />
-                        <ellipse cx="400" cy="780" rx="90" ry="18" fill="rgba(255,255,255,0.035)" />
                     </g>
-
-                    <!-- Atmósfera y borde -->
-                    <circle cx="450" cy="450" r="390" fill="url(#atmo-glow)" />
-                    <circle cx="450" cy="450" r="390" fill="none" stroke="rgba(169,100,20,0.4)" stroke-width="2"/>
-                    <circle cx="450" cy="450" r="393" fill="none" stroke="rgba(100,60,10,0.15)" stroke-width="3"/>
-                    <ellipse cx="310" cy="270" rx="110" ry="65" fill="rgba(255,255,255,0.04)" transform="rotate(-25,310,270)" />
                 </svg>
             </div>
 
-            <!-- Panel de información al hover -->
-            <div class="planet-info-panel" [class.planet-panel-visible]="hoveredContinent">
+            <!-- Panel de información -->
+            <div class="aethoris-info-panel"
+                 [class.has-content]="hoveredContinent"
+                 [ngStyle]="{'border-color': hoveredContinent ? getActiveContColor() : 'var(--primary-red)'}">
+
+                <!-- Estado vacío -->
                 @if (!hoveredContinent) {
-                <div class="planet-panel-empty">
-                    <span class="planet-panel-icon">🌍</span>
-                    <p>Pasa el cursor sobre un continente para explorar Aethoris</p>
+                <div class="a-empty-state">
+                    Pasa el cursor sobre el mapa<br>para explorar los continentes de Aethoris.
                 </div>
                 }
+
+                <!-- LITHARYA info -->
                 @if (hoveredContinent === 'litharya') {
-                <div class="planet-panel-content" style="border-top-color:#4C9A43">
-                    <h3 class="planet-panel-title" style="color:#7ec775">🌿 LITHARYA</h3>
-                    <p class="planet-panel-sub">El Continente de los Cinco Reinos</p>
-                    <div class="planet-panel-kingdoms">
-                        <div class="pkingdom" style="border-left-color:rgba(79,170,218,0.8)">🔵 <strong>Cyrion</strong><span>Norte helado y marino</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(139,44,56,0.8)">🔴 <strong>Vespera</strong><span>Este carmesí y político</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(221,160,42,0.8)">🟡 <strong>Ulthor</strong><span>Sur árido y guerrero</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(76,154,67,0.8)">🟢 <strong>Aeloreas</strong><span>Oeste forestal y mágico</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(255,255,255,0.4)">⚪ <strong>Valeroth</strong><span>Centro neutral y sagrado</span></div>
+                <div class="a-realm-info" style="--cont-color: #4C9A43">
+                    <div class="a-info-header" style="border-bottom-color:#4C9A43">
+                        <h2 class="a-info-title" style="color:#7ec775">🌿 Litharya</h2>
+                        <h3 class="a-info-subtitle">El Continente de los Cinco Reinos</h3>
+                    </div>
+                    <div class="a-info-columns">
+                        <div class="a-info-row">
+                            <span class="a-info-label">Reinos:</span>
+                            <ul class="a-info-list">
+                                <li style="--k-color:rgba(79,170,218,0.8)">🔵 <strong>Cyrion</strong> — Norte helado y marino</li>
+                                <li style="--k-color:rgba(139,44,56,0.8)">🔴 <strong>Vespera</strong> — Este carmesí y político</li>
+                                <li style="--k-color:rgba(221,160,42,0.8)">🟡 <strong>Ulthor</strong> — Sur árido y guerrero</li>
+                                <li style="--k-color:rgba(76,154,67,0.8)">🟢 <strong>Aeloreas</strong> — Oeste forestal y mágico</li>
+                                <li style="--k-color:rgba(255,255,255,0.4)">⚪ <strong>Valeroth</strong> — Centro neutral y sagrado</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 }
+
+                <!-- DRAKKONIA info -->
                 @if (hoveredContinent === 'drakkonia') {
-                <div class="planet-panel-content" style="border-top-color:#C0392B">
-                    <h3 class="planet-panel-title" style="color:#e07070">🔥 DRAKKONIA</h3>
-                    <p class="planet-panel-sub">El Continente de la Llama Eterna</p>
-                    <div class="planet-panel-kingdoms">
-                        <div class="pkingdom" style="border-left-color:rgba(180,60,60,0.8)">⚔️ <strong>Ton'arak</strong><span>Territorio Norte — Conquistadores</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(130,30,30,0.8)">🗡️ <strong>Ton'veth</strong><span>Territorio Sur — Guardianes</span></div>
+                <div class="a-realm-info">
+                    <div class="a-info-header" style="border-bottom-color:#C0392B">
+                        <h2 class="a-info-title" style="color:#e07070">🔥 Drakkonia</h2>
+                        <h3 class="a-info-subtitle">El Continente de la Llama Eterna</h3>
                     </div>
-                    <p class="planet-panel-desc">Tierra de guerreros forjados en fuego. Sus volcanes nunca se apagan.</p>
+                    <div class="a-info-columns">
+                        <div class="a-info-row">
+                            <span class="a-info-label">Territorios:</span>
+                            <ul class="a-info-list">
+                                <li style="--k-color:rgba(180,60,60,0.8)">⚔️ <strong>Ton'arak</strong> — Territorio Norte</li>
+                                <li style="--k-color:rgba(130,30,30,0.8)">🗡️ <strong>Ton'veth</strong> — Territorio Sur</li>
+                            </ul>
+                        </div>
+                        <div class="a-info-row a-desc-row">
+                            <p class="a-info-desc">Tierra de guerreros forjados en fuego y volcanes eternos. Sus noches nunca son oscuras.</p>
+                        </div>
+                    </div>
                 </div>
                 }
+
+                <!-- XYLOS info -->
                 @if (hoveredContinent === 'xylos') {
-                <div class="planet-panel-content" style="border-top-color:#1a8a8a">
-                    <h3 class="planet-panel-title" style="color:#5acece">🌊 XYLOS</h3>
-                    <p class="planet-panel-sub">El Archipiélago de los Siete Mares</p>
-                    <div class="planet-panel-kingdoms">
-                        <div class="pkingdom" style="border-left-color:rgba(26,138,138,0.7)">🌊 <strong>Mar'Ildran</strong><span>Mar del norte</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(26,138,138,0.7)">🌊 <strong>Mar'Osse</strong><span>Mar occidental</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(26,138,138,0.7)">🌊 <strong>Mar'Tethys</strong><span>Mar profundo</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(26,138,138,0.7)">🌊 <strong>Mar'Soryn</strong><span>Mar oriental</span></div>
-                        <div class="pkingdom" style="border-left-color:rgba(26,138,138,0.7)">🌊 <strong>Mar'Velun · Mar'Karath · Mar'Azara</strong></div>
+                <div class="a-realm-info">
+                    <div class="a-info-header" style="border-bottom-color:#1a8a8a">
+                        <h2 class="a-info-title" style="color:#5acece">🌊 Xylos</h2>
+                        <h3 class="a-info-subtitle">El Archipiélago de los Siete Mares</h3>
+                    </div>
+                    <div class="a-info-columns">
+                        <div class="a-info-row">
+                            <span class="a-info-label">Mares:</span>
+                            <ul class="a-info-list">
+                                <li style="--k-color:rgba(26,138,138,0.7)">🌊 Mar'Ildran · Mar'Osse · Mar'Tethys</li>
+                                <li style="--k-color:rgba(26,138,138,0.7)">🌊 Mar'Soryn · Mar'Velun</li>
+                                <li style="--k-color:rgba(26,138,138,0.7)">🌊 Mar'Karath · Mar'Azara</li>
+                            </ul>
+                        </div>
+                        <div class="a-info-row a-desc-row">
+                            <p class="a-info-desc">Un archipiélago de corrientes misteriosas y mares que guardan secretos bajo sus aguas.</p>
+                        </div>
                     </div>
                 </div>
                 }
+
+                <!-- DESCONOCIDO info -->
                 @if (hoveredContinent === 'unknown') {
-                <div class="planet-panel-content" style="border-top-color:#666">
-                    <h3 class="planet-panel-title" style="color:#aaa">❓ CONTINENTE DESCONOCIDO</h3>
-                    <p class="planet-panel-sub">Sin nombre. Sin historia. Sin retorno.</p>
-                    <p class="planet-panel-desc">Ningún explorador ha cruzado sus costas y vuelto para contarlo. Los mapas lo marcan solo con una advertencia: <em>"Aquí hay algo."</em></p>
+                <div class="a-realm-info">
+                    <div class="a-info-header" style="border-bottom-color:#666">
+                        <h2 class="a-info-title" style="color:#aaa">❓ Continente Desconocido</h2>
+                        <h3 class="a-info-subtitle">Sin nombre. Sin historia. Sin retorno.</h3>
+                    </div>
+                    <div class="a-info-columns">
+                        <div class="a-info-row a-desc-row">
+                            <p class="a-info-desc">Ningún explorador ha cruzado sus costas y vuelto para contarlo. Los mapas lo marcan con una sola advertencia: <em>"Aquí hay algo."</em></p>
+                        </div>
+                    </div>
                 </div>
                 }
             </div>
-        </div>
-
-        <!-- Leyenda -->
-        <div class="planet-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:#3a7a35;"></div><span>Litharya</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background:#9b2020;"></div><span>Drakkonia</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background:#0e6e6e;"></div><span>Xylos</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background:#555;"></div><span>Desconocido</span></div>
-        </div>
-
-        <!-- Imagen artística del Planeta -->
-        <div class="planet-art-wrapper">
-            <img src="/assets/images/aethoris.png" alt="Aethoris - Planeta" class="planet-art-image" />
         </div>
     </section>
 
@@ -251,8 +262,7 @@
                 El mundo de Aethoris es un mundo de fantasía épica con una rica historia, cultura y secretos.
                 Está conformado por tres (3) grandes continentes (Litharya, Drakkonia y Xylos), cada uno con sus
                 propias tradiciones y costumbres. A su vez, cada continente está dividido en diferentes reinos/ciudades,
-                cada uno con
-                sus propias leyes y gobierno. Aethoris está en constante cambio, con nuevas aventuras y desafíos
+                cada uno con sus propias leyes y gobierno. Aethoris está en constante cambio, con nuevas aventuras y desafíos
                 esperando a ser descubiertos.
             </p>
         </div>
@@ -265,18 +275,12 @@
             <div class="section-divider"></div>
         </div>
         <div class="ficha-grid">
-            <div class="ficha-card"><span class="ficha-label">Nombre del planeta</span><span
-                    class="ficha-value">Aethoris</span></div>
-            <div class="ficha-card"><span class="ficha-label">Significado</span><span class="ficha-value">"Morada de la
-                    luz divina"</span></div>
-            <div class="ficha-card"><span class="ficha-label">Día</span><span class="ficha-value">36 horas terrestres
-                    (12 terzios de 3h)</span></div>
-            <div class="ficha-card"><span class="ficha-label">Año</span><span class="ficha-value">240 días aethorianos
-                    (360 días terrestres)</span></div>
-            <div class="ficha-card"><span class="ficha-label">Meses</span><span class="ficha-value">12 meses de 20
-                    días</span></div>
-            <div class="ficha-card"><span class="ficha-label">Estaciones</span><span class="ficha-value">4 estaciones de
-                    3 meses</span></div>
+            <div class="ficha-card"><span class="ficha-label">Nombre del planeta</span><span class="ficha-value">Aethoris</span></div>
+            <div class="ficha-card"><span class="ficha-label">Significado</span><span class="ficha-value">"Morada de la luz divina"</span></div>
+            <div class="ficha-card"><span class="ficha-label">Día</span><span class="ficha-value">36 horas terrestres (12 terzios de 3h)</span></div>
+            <div class="ficha-card"><span class="ficha-label">Año</span><span class="ficha-value">240 días aethorianos (360 días terrestres)</span></div>
+            <div class="ficha-card"><span class="ficha-label">Meses</span><span class="ficha-value">12 meses de 20 días</span></div>
+            <div class="ficha-card"><span class="ficha-label">Estaciones</span><span class="ficha-value">4 estaciones de 3 meses</span></div>
         </div>
     </section>
 
@@ -307,7 +311,7 @@
         </div>
     </section>
 
-    <!-- Las Lunas (misma estética que Soles) -->
+    <!-- Las Lunas -->
     <section class="moons-section">
         <div class="section-header">
             <h2 class="section-title">🌙 LAS 5 "LUNAS"</h2>
@@ -325,7 +329,7 @@
         </div>
     </section>
 
-    <!-- Calendario (resumido) -->
+    <!-- Calendario -->
     <section class="calendar-section">
         <div class="section-header">
             <h2 class="section-title">📅 Calendario Aethoreano</h2>
